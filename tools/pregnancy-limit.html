@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pregnancy Caffeine Limit — CaffeineCheck</title>
+<meta name="description" content="Stay within the 200mg NHS/FDA pregnancy limit. Budget your daily caffeine by beverage type and trimester.">
+<link rel="canonical" href="https://caffeinecheck.org/tools/pregnancy-limit.html">
+<link rel="icon" type="image/x-icon" href="../favicon.ico">
+<meta property="og:title" content="Pregnancy Caffeine Limit — CaffeineCheck">
+<meta property="og:description" content="200mg daily caffeine budget for pregnancy. Trimester-aware recommendations.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://caffeinecheck.org/tools/pregnancy-limit.html">
+<meta property="og:image" content="https://caffeinecheck.org/images/og-default.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pregnancy Caffeine Limit — CaffeineCheck">
+  <meta name="twitter:description" content="200mg daily caffeine budget for pregnancy. Trimester-aware recommendations.">
+  <meta name="twitter:image" content="https://caffeinecheck.org/images/og-default.jpg">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://caffeinecheck.org/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://caffeinecheck.org/tools/"},{"@type":"ListItem","position":3,"name":"Pregnancy Caffeine Limit","item":"https://caffeinecheck.org/tools/pregnancy-limit.html"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Pregnancy Caffeine Limit","applicationCategory":"HealthApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+</head>
+<body>
+<nav class="cafc-nav"><div class="cafc-container cafc-nav-inner"><a href="../index.html" class="cafc-logo">Caffeine<span>Check</span></a><button class="cafc-nav-toggle" onclick="document.querySelector('.cafc-nav-links').classList.toggle('active')">☰</button><ul class="cafc-nav-links"><li><a href="../index.html">Home</a></li><li><a href="./index.html">Tools</a></li><li><a href="../blog/index.html">Blog</a></li><li><a href="../about.html">About</a></li><li><a href="../contact.html">Contact</a></li><li><a href="../faq.html">FAQ</a></li></ul></div></nav>
+<div class="cafc-container"><nav class="cafc-breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="./index.html">Tools</a><span>/</span><span>Pregnancy Caffeine Limit</span></nav></div>
+<div class="cafc-tool-hero"><div class="cafc-container"><h1>Pregnancy Caffeine Limit</h1><p>Budget your 200mg daily allowance safely. Trimester-specific guidance for every cup.</p></div></div>
+<div class="cafc-container"><div class="cafc-ad-slot" data-ad-slot="tool_top"><span>Advertisement</span></div></div>
+
+<main class="cafc-container" style="padding:2rem 0 3rem;">
+<div style="display:grid;grid-template-columns:1fr 2fr;gap:2rem;">
+<div class="cafc-tool-panel" style="text-align:center;"><h2 style="font-size:1.2rem;font-weight:700;color:var(--cafc-primary);margin-bottom:1.5rem;">Daily Budget</h2>
+<div style="position:relative;width:200px;height:200px;margin:0 auto;">
+<svg width="200" height="200" viewBox="0 0 200 200"><circle cx="100" cy="100" r="85" fill="none" stroke="var(--cafc-secondary)" stroke-width="16"/><circle id="budget-ring" cx="100" cy="100" r="85" fill="none" stroke="var(--cafc-accent)" stroke-width="16" stroke-dasharray="534" stroke-dashoffset="534" stroke-linecap="round" transform="rotate(-90 100 100)"/><text x="100" y="95" text-anchor="middle" font-size="32" font-weight="800" fill="var(--cafc-primary)">200</text><text x="100" y="115" text-anchor="middle" font-size="12" fill="var(--cafc-text-muted)">mg limit</text></svg>
+</div>
+<div id="budget-status" style="margin-top:1rem;font-weight:600;color:var(--cafc-primary);">0mg used — 200mg remaining</div>
+</div>
+<div class="cafc-tool-panel"><h2 style="font-size:1.2rem;font-weight:700;color:var(--cafc-primary);margin-bottom:1.5rem;">Build Your Day</h2>
+<div class="cafc-form-group"><label for="trimester">Trimester</label><select id="trimester"><option value="1">First Trimester (Weeks 1-12)</option><option value="2" selected>Second Trimester (Weeks 13-26)</option><option value="3">Third Trimester (Weeks 27-40)</option></select></div>
+<div class="cafc-form-group"><label for="preg-beverage">Beverage</label><select id="preg-beverage"><option value="">Select...</option><option value="small-coffee-95">Small Coffee (8oz) — 95mg</option><option value="medium-coffee-145">Medium Coffee (12oz) — 145mg</option><option value="latte-75">Latte (12oz) — 75mg</option><option value="black-tea-47">Black Tea (8oz) — 47mg</option><option value="green-tea-28">Green Tea (8oz) — 28mg</option><option value="decaf-5">Decaf Coffee (8oz) — 5mg</option><option value="soda-34">Cola (12oz) — 34mg</option><option value="chocolate-20">Dark Chocolate (1oz) — 20mg</option><option value="custom">Custom</option></select></div>
+<div class="cafc-form-group" id="preg-custom-group" style="display:none;"><label for="preg-custom-mg">Caffeine (mg)</label><input type="number" id="preg-custom-mg" min="0" max="500" placeholder="e.g. 50"></div>
+<div class="cafc-btn-group"><button class="cafc-btn cafc-btn-primary" onclick="addPregEntry()">Add to Budget</button><button class="cafc-btn cafc-btn-secondary" onclick="resetPreg()">Reset</button></div>
+<div id="preg-error" style="color:var(--cafc-accent);margin-top:1rem;font-size:0.9rem;display:none;"></div>
+</div>
+</div>
+
+<div class="cafc-tool-panel" style="margin-top:2rem;"><h3 style="font-size:1.1rem;font-weight:700;color:var(--cafc-primary);margin-bottom:1rem;">Today's Budget Log</h3><div style="overflow-x:auto;"><table class="cafc-table" id="preg-table"><thead><tr><th>Beverage</th><th>mg</th><th>Action</th></tr></thead><tbody id="preg-tbody"><tr><td colspan="3" style="text-align:center;color:var(--cafc-text-muted);">No entries yet.</td></tr></tbody></table></div><div class="cafc-btn-group" style="margin-top:1rem;"><button class="cafc-btn cafc-btn-secondary" onclick="exportPreg()">Export</button><button class="cafc-btn cafc-btn-accent" onclick="clearPreg()" style="background:#dc2626;">Clear All</button></div></div>
+
+<div class="cafc-tool-panel" style="margin-top:2rem;"><h3 style="font-size:1.1rem;font-weight:700;color:var(--cafc-primary);margin-bottom:1rem;">Trimester Notes</h3><div id="trimester-info" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;"><div style="background:var(--cafc-bg-warm);border:1px solid var(--cafc-border);border-radius:var(--cafc-radius);padding:1rem;"><h4 style="color:var(--cafc-primary);font-size:0.95rem;margin-bottom:0.5rem;">First Trimester</h4><p style="font-size:0.85rem;color:var(--cafc-text-muted);">Most sensitive period. Caffeine crosses placenta easily. Consider staying under 150mg if possible.</p></div><div style="background:var(--cafc-bg-warm);border:1px solid var(--cafc-border);border-radius:var(--cafc-radius);padding:1rem;"><h4 style="color:var(--cafc-primary);font-size:0.95rem;margin-bottom:0.5rem;">Second Trimester</h4><p style="font-size:0.85rem;color:var(--cafc-text-muted);">Standard 200mg limit applies. CYP1A2 enzyme activity decreases, so caffeine stays longer.</p></div><div style="background:var(--cafc-bg-warm);border:1px solid var(--cafc-border);border-radius:var(--cafc-radius);padding:1rem;"><h4 style="color:var(--cafc-primary);font-size:0.95rem;margin-bottom:0.5rem;">Third Trimester</h4><p style="font-size:0.85rem;color:var(--cafc-text-muted);">Caffeine half-life triples. Consider reducing to 150mg. Avoid caffeine after 2pm.</p></div></div></div>
+</main>
+
+<div class="cafc-container">
+  <div class="cafc-ad-slot" data-ad-slot="tool_middle"><span>Advertisement</span></div>
+</div>
+
+<div class="cafc-container"><div class="cafc-ad-slot" data-ad-slot="tool_bottom"><span>Advertisement</span></div></div>
+<div class="cafc-container" style="padding:2rem 0;"><div style="display:grid;grid-template-columns:2fr 1fr;gap:2rem;"><div><h3 style="font-size:1.1rem;font-weight:700;color:var(--cafc-primary);margin-bottom:1rem;">Related Articles</h3><ul class="cafc-related-list" id="related-articles"><li><a href="../blog/index.html"><span>Browse articles →</span></a></li></ul></div><div><h3 style="font-size:1.1rem;font-weight:700;color:var(--cafc-primary);margin-bottom:1rem;">Other Tools</h3><ul class="cafc-tool-list" id="other-tools"><li><a href="./caffeine-calculator.html"><span>Caffeine Calculator</span></a></li><li><a href="./half-life-tracker.html"><span>Half-Life Tracker</span></a></li><li><a href="./sleep-estimator.html"><span>Sleep Estimator</span></a></li><li><a href="./energy-drink-comparator.html"><span>Energy Drink Comparator</span></a></li><li><a href="./withdrawal-timeline.html"><span>Withdrawal Timeline</span></a></li></ul></div></div></div>
+
+<div class="cafc-container" style="padding: 2rem 0;">
+<div class="cafc-tool-panel">
+<h2 style="font-size:1.3rem;font-weight:700;color:var(--cafc-primary);margin-bottom:1.5rem;">How It Works</h2>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;">
+<div>
+<h4 style="color:var(--cafc-primary);font-size:1rem;margin-bottom:0.5rem;">🔬 Calculation Principle</h4>
+<p style="font-size:0.9rem;color:var(--cafc-text-muted);line-height:1.6;">The tool tracks your daily caffeine budget against the 200mg NHS/FDA pregnancy limit. Each trimester has different metabolic considerations: first trimester is most sensitive, third trimester shows tripled half-life. The ring chart visualizes your remaining budget in real time.</p>
+</div>
+<div>
+<h4 style="color:var(--cafc-primary);font-size:1rem;margin-bottom:0.5rem;">📝 How to Use</h4>
+<p style="font-size:0.9rem;color:var(--cafc-text-muted);line-height:1.6;">Select your trimester, choose a beverage from the database or enter a custom amount, then click "Add to Budget." The ring chart updates instantly. Use the Trimester Notes to understand why limits vary by pregnancy stage.</p>
+</div>
+<div>
+<h4 style="color:var(--cafc-primary);font-size:1rem;margin-bottom:0.5rem;">💡 Pro Tips</h4>
+<p style="font-size:0.9rem;color:var(--cafc-text-muted);line-height:1.6;">• First trimester: consider staying under 150mg.<br>• Third trimester: half-life triples — avoid caffeine after 2 PM.<br>• Decaf still has 5mg per cup — it counts.<br>• Export your budget log for your prenatal appointments.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="cafc-container" style="padding: 2rem 0;">
+<div style="background: var(--cafc-bg-warm); border: 1px solid var(--cafc-border); border-radius: var(--cafc-radius-lg); padding: 1.5rem; text-align: center;">
+<p style="font-weight: 600; color: var(--cafc-primary); margin-bottom: 1rem; font-size: 1rem;">Share this tool</p>
+<div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+<a href="https://twitter.com/intent/tweet?text=Pregnancy Caffeine Limit&url=https://caffeinecheck.org/tools/pregnancy-limit.html" target="_blank" rel="noopener" class="cafc-btn cafc-btn-secondary" style="font-size: 0.85rem;">𝕏 Twitter</a>
+<a href="https://www.facebook.com/sharer/sharer.php?u=https://caffeinecheck.org/tools/pregnancy-limit.html" target="_blank" rel="noopener" class="cafc-btn cafc-btn-secondary" style="font-size: 0.85rem;">Facebook</a>
+<a href="https://www.linkedin.com/sharing/share-offsite/?url=https://caffeinecheck.org/tools/pregnancy-limit.html" target="_blank" rel="noopener" class="cafc-btn cafc-btn-secondary" style="font-size: 0.85rem;">LinkedIn</a>
+<a href="mailto:?subject=Pregnancy Caffeine Limit&body=https://caffeinecheck.org/tools/pregnancy-limit.html" class="cafc-btn cafc-btn-secondary" style="font-size: 0.85rem;">Email</a>
+<button onclick="navigator.clipboard.writeText('https://caffeinecheck.org/tools/pregnancy-limit.html').then(function(){alert('Link copied!');})" class="cafc-btn cafc-btn-secondary" style="font-size: 0.85rem;">Copy Link</button>
+</div>
+</div>
+</div>
+<footer class="cafc-footer"><div class="cafc-container"><div class="cafc-footer-grid"><div class="cafc-footer-col"><h4>Latest Articles</h4><ul id="cafc-footer-articles"><li><a href="../blog/index.html">Browse all articles →</a></li></ul></div><div class="cafc-footer-col"><h4>Tools</h4><ul><li><a href="./caffeine-calculator.html">Caffeine Calculator</a></li><li><a href="./half-life-tracker.html">Half-Life Tracker</a></li><li><a href="./sleep-estimator.html">Sleep Estimator</a></li><li><a href="./pregnancy-limit.html">Pregnancy Limit</a></li><li><a href="./energy-drink-comparator.html">Energy Drink Comparator</a></li><li><a href="./withdrawal-timeline.html">Withdrawal Timeline</a></li></ul></div><div class="cafc-footer-col"><h4>Legal</h4><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms of Use</a></li><li><a href="../disclaimer.html">Disclaimer</a></li><li><a href="../disclosure.html">Affiliate Disclosure</a></li><li><a href="../faq.html">FAQ</a></li><li><a href="../contact.html">Contact</a></li></ul></div></div><div class="cafc-footer-bottom"><p>© 2026 CaffeineCheck. All rights reserved.</p><div class="cafc-back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Back to top</div></div></div></footer>
+
+<script src="../ads-loader.js"></script>
+<script>
+(function(){
+'use strict';
+var DB_KEY='preg_budget_v1';
+var LIMIT=200;
+var bevData={"small-coffee-95":95,"medium-coffee-145":145,"latte-75":75,"black-tea-47":47,"green-tea-28":28,"decaf-5":5,"soda-34":34,"chocolate-20":20};
+function addPregEntry(){var type=document.getElementById('preg-beverage').value;var err=document.getElementById('preg-error');if(!type){err.textContent='Select a beverage.';err.style.display='block';return;}var mg=0;var name='';if(type==='custom'){mg=parseInt(document.getElementById('preg-custom-mg').value)||0;name='Custom';if(mg<=0){err.textContent='Enter valid mg.';err.style.display='block';return;}}else{mg=bevData[type]||0;name=document.querySelector('#preg-beverage option[value="'+type+'"]').textContent.split('—')[0].trim();}err.style.display='none';var log=JSON.parse(localStorage.getItem(DB_KEY)||'[]');log.push({id:Date.now(),name:name,mg:mg,trimester:document.getElementById('trimester').value,date:new Date().toISOString().split('T')[0]});localStorage.setItem(DB_KEY,JSON.stringify(log));renderPreg();}
+function renderPreg(){var log=JSON.parse(localStorage.getItem(DB_KEY)||'[]');var today=log.filter(function(e){return e.date===new Date().toISOString().split('T')[0];});var total=today.reduce(function(s,e){return s+e.mg;},0);var remaining=Math.max(0,LIMIT-total);var pct=Math.min((total/LIMIT)*100,100);var ring=document.getElementById('budget-ring');var offset=534-(534*pct/100);ring.setAttribute('stroke-dashoffset',offset);var color=pct>100?'#dc2626':(pct>80?'#f59e0b':'var(--cafc-accent)');ring.setAttribute('stroke',color);document.getElementById('budget-status').innerHTML=total+'mg used — '+remaining+'mg remaining <span style="color:'+color+';">('+Math.round(pct)+'%)</span>';var tbody=document.getElementById('preg-tbody');if(today.length===0){tbody.innerHTML='<tr><td colspan="3" style="text-align:center;color:var(--cafc-text-muted);">No entries yet.</td></tr>';return;}tbody.innerHTML='';today.forEach(function(e){var tr=document.createElement('tr');tr.innerHTML='<td>'+e.name+'</td><td>'+e.mg+'mg</td><td><button onclick="deletePreg('+e.id+')" style="background:none;border:none;color:var(--cafc-accent);cursor:pointer;font-size:0.85rem;">Delete</button></td>';tbody.appendChild(tr);});}
+function deletePreg(id){var log=JSON.parse(localStorage.getItem(DB_KEY)||'[]').filter(function(e){return e.id!==id;});localStorage.setItem(DB_KEY,JSON.stringify(log));renderPreg();}
+function resetPreg(){document.getElementById('preg-beverage').value='';document.getElementById('preg-custom-mg').value='';document.getElementById('preg-custom-group').style.display='none';document.getElementById('preg-error').style.display='none';}
+function clearPreg(){if(!confirm('Clear ALL pregnancy budget entries?'))return;localStorage.removeItem(DB_KEY);renderPreg();}
+function exportPreg(){var log=JSON.parse(localStorage.getItem(DB_KEY)||'[]');if(log.length===0){alert('No data.');return;}var csv='Date,Beverage,mg,Trimester\n';log.forEach(function(e){csv+=e.date+','+e.name+','+e.mg+','+e.trimester+'\n';});var blob=new Blob([csv],{type:'text/csv'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='pregnancy-budget.csv';a.click();}
+document.getElementById('preg-beverage').addEventListener('change',function(){document.getElementById('preg-custom-group').style.display=this.value==='custom'?'block':'none';});
+function loadRelatedArticles(){fetch('../articles.json').then(function(r){return r.json();}).then(function(data){var articles=Array.isArray(data)?data:(data.articles||[]);var list=document.getElementById('related-articles');if(list&&articles.length>0){list.innerHTML='';articles.slice(0,3).forEach(function(a){var li=document.createElement('li');var link=document.createElement('a');link.href='../blog/'+a.slug+'.html';var img=document.createElement('img');img.src='../images/blog/'+a.slug+'.jpg';img.alt=a.title;img.width=60;img.height=45;img.loading='lazy';var span=document.createElement('span');span.textContent=a.title;link.appendChild(img);link.appendChild(span);li.appendChild(link);list.appendChild(li);});}}).catch(function(e){console.warn(e);});}
+function loadFooterArticles(){fetch('../articles.json').then(function(r){return r.json();}).then(function(data){var articles=Array.isArray(data)?data:(data.articles||[]);var fl=document.getElementById('cafc-footer-articles');if(fl&&articles.length>0){fl.innerHTML='';articles.slice(0,5).forEach(function(a){var li=document.createElement('li');var link=document.createElement('a');link.href='../blog/'+a.slug+'.html';link.textContent=a.title;li.appendChild(link);fl.appendChild(li);});}}).catch(function(e){console.warn(e);});}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){renderPreg();loadRelatedArticles();loadFooterArticles();});}else{renderPreg();loadRelatedArticles();loadFooterArticles();}
+window.deletePreg=deletePreg;
+})();
+</script>
+</body>
+</html>
