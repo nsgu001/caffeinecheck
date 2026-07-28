@@ -1,0 +1,43 @@
+# caffeinecheck.org
+
+Free online calculators and educational content. Not professional advice.
+
+## Pages
+- Home: https://caffeinecheck.org/
+- Tools: https://caffeinecheck.org/tools/
+- Blog: https://caffeinecheck.org/blog/
+- About: https://caffeinecheck.org/about.html
+- Contact: https://caffeinecheck.org/contact.html
+- FAQ: https://caffeinecheck.org/faq.html
+- Sitemap: https://caffeinecheck.org/sitemap.html
+
+## Tools
+- Caffeine Intake Calculator — CaffeineCheck: https://caffeinecheck.org/tools/caffeine-calculator.html
+- Energy Drink Comparator — CaffeineCheck: https://caffeinecheck.org/tools/energy-drink-comparator.html
+- Caffeine Half-Life Tracker — CaffeineCheck: https://caffeinecheck.org/tools/half-life-tracker.html
+- Pregnancy Caffeine Limit — CaffeineCheck: https://caffeinecheck.org/tools/pregnancy-limit.html
+- Sleep Impact Estimator — CaffeineCheck: https://caffeinecheck.org/tools/sleep-estimator.html
+- Caffeine Withdrawal Timeline — CaffeineCheck: https://caffeinecheck.org/tools/withdrawal-timeline.html
+
+## Articles
+- Seattle Heat Wave Caffeine Toxicity 2026 (seattle-heat-wave-caffeine-toxicity-2026) -- Seattle hit 95°F last Tuesday. I know that doesn't sound like much to people in Phoenix or Dallas. But Seattle is not built for 95 degrees. We don't have air conditioning in most apartments. We don't -- July 23, 2026
+- Afternoon Coffee Cost Three Nights Sleep (afternoon-coffee-cost-three-nights-sleep) -- I used to think caffeine had a six-hour half-life. That was the number I carried in my head, the one that let me drink coffee at 3 PM and tell myself it would be "out of my system by bedtime." I was w -- July 06, 2026
+- Seattle Heat Wave Caffeine Toxicity (seattle-heat-wave-caffeine-toxicity) -- My Caffeine Habit Nearly Sent Me to the ER During Seattle's Hottest June on Record Alex Morgan I was on my third cold brew of the day when the dizziness hit. Not the pleasant buzz of caffeine doing it -- July 06, 2026
+- The Monday I Accidentally Drank 600Mg Of Caffeine (the-monday-i-accidentally-drank-600mg-of-caffeine) -- The Monday I Accidentally Drank 600mg of Caffeine Before Noon The pipette did not slip this time. The mistake was much bigger than a smeared calibration line. I had miscalculated my intake by 300 mill -- June 30, 2026
+- That Pre Workout Powder Has 400Mg Of Caffeine And Thats Not (that-pre-workout-powder-has-400mg-of-caffeine-and-thats-not) -- That Pre-Workout Powder Has 400mg of Caffeine. And That's Not Even the Worst Part. 400 milligrams. That's what the label said. One scoop. Four hundred. I stood in my Capitol Hill loft holding the tub, -- June 24, 2026
+- 13 Age Slows Your CYP1A2 — CaffeineCheck (age-slows-your-cyp1a2) -- The first time I noticed it, I was thirty-three. I’d had my usual morning coffee – a 16-ounce pour‑over, about 200 mg of caffeine – and then a second cup around... -- June 03, 2026
+- 12 Caffeine, Fat Oxidation, and the Overweight Athlete — CaffeineCheck (caffeine-fat-oxidation-and-the-overweight-athlete) -- I asked him how much caffeine. “200 mg,” he said. “Sometimes 400.” -- May 24, 2026
+- 07 Growing Brains on Caffeine — CaffeineCheck (growing-brains-on-caffeine) -- The research monkey sat in a cage with a feeding tube. I saw the video during a lecture at a neuroscience conference in 2019. -- May 03, 2026
+- 10 Pre-Workout Powder: 400mg Caffeine + ?? — CaffeineCheck (pre-workout-powder-400mg-caffeine) -- The scoop was larger than I expected. I’d bought the tub online after reading reviews that promised “laser focus” and “unstoppable energy.” The label said -- March 26, 2026
+- 14 Pregnancy: When Caffeine's Half-Life Triples — CaffeineCheck (pregnancy-when-caffeines-half-life-triples) -- The pregnancy test had two lines. Sam held it up to the light. “Is that positive?” she asked. I took it from her. The second line was faint but there. “Yes,” I ... -- March 18, 2026
+- 08 School Lunch’s Hidden Caffeine — CaffeineCheck (school-lunchs-hidden-caffeine) -- It sold energy drinks. Not the small cans. The tall ones. Sixteen ounces. Labels that screamed “EXTREME” and “POWER” and “ZERO SUGAR.” Bright neon colors -- March 15, 2026
+- 03 Slow Metabolizer‘s Dilemma: CYP1A2 CC and Heart Risk — CaffeineCheck (slow-metabolizers-dilemma-cyp1a2-cc-and-heart-risk) -- The mother’s name was Denise. Her son, Tyler, was seventeen. He played football. He was six feet tall, two hundred pounds, no known health problems. -- March 13, 2026
+- 06 The 200mg Teenager — CaffeineCheck (the-200mg-teenager) -- The can was blue. That’s the detail I remember. A bright, electric blue can with black lettering, sitting on the counter of a 7‑Eleven in Seattle, bathed -- March 11, 2026
+- 17 The 70-Year-Old Who Quit Coffee at 5 PM and Still Couldn’t Sleep — CaffeineCheck (the-70-year-old-who-quit-coffee-at-5-pm-and-still) -- The man’s name was Frank. Seventy-two years old. Retired engineer. He’d been drinking coffee since college, always the same routine: one cup at 7 AM, one -- February 19, 2026
+- 05 The Anxious Cup — CaffeineCheck (the-anxious-cup) -- Not the dramatic kind. No chest pain, no shortness of breath. Just a single skip, a pause, then a thud. -- February 12, 2026
+- 09 The Cheerleader‘s CYP1A2 Was Never Tested — CaffeineCheck (the-cheerleaders-cyp1a2-was-never-tested) -- The Energy Drink Comparator lists Alani Nu at 200 mg of caffeine per can. -- February 10, 2026
+- 01 The Half-Life in My Blood — CaffeineCheck (the-half-life-in-my-blood) -- The pipette slipped. Just a little. Enough to smear the calibration line across the page of my lab notebook. -- February 07, 2026
+- 11 The Man Who Drank 6 Energy Drinks Before His Game — CaffeineCheck (the-man-who-drank-6-energy-drinks-before-his-game) -- By 5 PM, he was in the emergency room. His heart was beating at 170 beats per minute. His blood pressure was 180/110. He was vomiting. He was confused. -- February 06, 2026
+- 15 The Meds That Hijack Your Caffeine — CaffeineCheck (the-meds-that-hijack-your-caffeine) -- Fluvoxamine is a potent inhibitor of CYP1A2. It can reduce the enzyme’s activity by up to 90%. -- January 23, 2026
+- 02 Why Your 3 PM Coffee Keeps You Up at 11 PM — CaffeineCheck (why-your-3-pm-coffee-keeps-you-up-at-11-pm) -- The mug was still warm. I remember that. My hand wrapped around the ceramic, feeling the last traces of heat bleed into my palm. It was 3:47 PM. -- January 22, 2026
+- 04 Why Your Partner Can Sip Espresso at 9 PM — CaffeineCheck (why-your-partner-can-sip-espresso-at-9-pm) -- Sam makes tea at 9 PM. Not decaf. Real black tea. A bag of English Breakfast steeps in a ceramic mug while she scrolls her phone, and by 9:30 she’s in -- January 21, 2026
