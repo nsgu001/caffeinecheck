@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CaffeineCheck — Track Your Caffeine Intake & Sleep Impact</title>
+<meta name="description" content="Free tools to track caffeine intake, calculate half-life, estimate sleep impact, and stay within safe limits. All data stays in your browser.">
+<link rel="canonical" href="https://caffeinecheck.org/">
+<link rel="icon" type="image/x-icon" href="./favicon.ico">
+
+<!-- OG5 -->
+<meta property="og:title" content="CaffeineCheck — Track Your Caffeine Intake & Sleep Impact">
+<meta property="og:description" content="Free caffeine tracking tools with real-time calculations, localStorage, and data visualization.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://caffeinecheck.org/">
+<meta property="og:image" content="https://caffeinecheck.org/images/og-default.jpg">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CaffeineCheck — Track Your Caffeine Intake & Sleep Impact">
+<meta name="twitter:description" content="Free caffeine tracking tools with real-time calculations and sleep impact estimation.">
+<meta name="twitter:image" content="https://caffeinecheck.org/images/og-default.jpg">
+
+<link rel="stylesheet" href="./style.css">
+
+<!-- WebSite Schema -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"CaffeineCheck","url":"https://caffeinecheck.org/","description":"Free caffeine tracking tools with real-time calculations, localStorage, and data visualization.","publisher":{"@type":"Organization","name":"CaffeineCheck","url":"https://caffeinecheck.org/"},"potentialAction":{"@type":"SearchAction","target":"https://caffeinecheck.org/tools/","query-input":"required name=search_term"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://caffeinecheck.org/"}]}
+</script>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="cafc-nav">
+<div class="cafc-container cafc-nav-inner">
+<a href="./index.html" class="cafc-logo">Caffeine<span>Check</span></a>
+<button class="cafc-nav-toggle" onclick="document.querySelector('.cafc-nav-links').classList.toggle('active')" aria-label="Toggle menu">☰</button>
+<ul class="cafc-nav-links">
+<li><a href="./index.html" class="active">Home</a></li>
+<li><a href="./tools/index.html">Tools</a></li>
+<li><a href="./blog/index.html">Blog</a></li>
+<li><a href="./about.html">About</a></li>
+<li><a href="./contact.html">Contact</a></li>
+<li><a href="./faq.html">FAQ</a></li>
+</ul>
+</div>
+</nav>
+
+<!-- Hero Section: Interactive Experiment (Layout H) -->
+<section class="cafc-hero">
+<div class="cafc-container cafc-hero-inner">
+<div>
+<h1 class="cafc-hero-title">How much caffeine is in your cup?</h1>
+<p class="cafc-hero-subtitle">Track intake, calculate half-life, and protect your sleep — all in your browser. No accounts. No tracking. Just data.</p>
+<a href="./tools/index.html" class="cafc-hero-cta">Explore All Tools →</a>
+</div>
+<div class="cafc-hero-visual">
+<p style="font-weight:600;color:rgba(255,255,255,0.9);margin-bottom:1rem;font-size:0.95rem;">Try it now — no signup needed</p>
+<div class="cafc-hero-demo-input">
+<select id="hero-beverage" style="flex:1;padding:0.75rem 1rem;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.1);color:#fff;border-radius:var(--cafc-radius);font-family:var(--cafc-font);font-size:0.95rem;">
+<option value="" style="color:#333">Select a drink...</option>
+<option value="95" style="color:#333">Drip Coffee (8oz) — 95mg</option>
+<option value="145" style="color:#333">Drip Coffee (12oz) — 145mg</option>
+<option value="63" style="color:#333">Espresso Shot — 63mg</option>
+<option value="200" style="color:#333">Cold Brew (16oz) — 200mg</option>
+<option value="160" style="color:#333">Energy Drink (16oz) — 160mg</option>
+<option value="47" style="color:#333">Black Tea (8oz) — 47mg</option>
+<option value="34" style="color:#333">Cola (12oz) — 34mg</option>
+</select>
+<button onclick="heroCalculate()" style="background:var(--cafc-accent);color:#fff;border:none;padding:0.75rem 1.5rem;border-radius:var(--cafc-radius);font-weight:600;cursor:pointer;transition:var(--cafc-transition);white-space:nowrap;">Calculate</button>
+</div>
+<div class="cafc-hero-demo-result" id="hero-result" style="display:none;">
+<span id="hero-result-text"></span>
+</div>
+<div style="margin-top:1rem;display:flex;gap:1rem;flex-wrap:wrap;">
+<a href="./tools/caffeine-calculator.html" style="color:rgba(255,255,255,0.7);font-size:0.85rem;text-decoration:underline;">Full Calculator →</a>
+<a href="./tools/half-life-tracker.html" style="color:rgba(255,255,255,0.7);font-size:0.85rem;text-decoration:underline;">Half-Life Tracker →</a>
+<a href="./tools/sleep-estimator.html" style="color:rgba(255,255,255,0.7);font-size:0.85rem;text-decoration:underline;">Sleep Estimator →</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Ad: hero_top -->
+<div class="cafc-container">
+<div class="cafc-ad-slot" data-ad-slot="hero_top"><span>Advertisement</span></div>
+</div>
+
+<!-- Stats Bar -->
+<section class="cafc-stats">
+<div class="cafc-container cafc-stats-grid">
+<div>
+<div class="cafc-stat-number" id="stat-users">6</div>
+<div class="cafc-stat-label">Tools Available</div>
+</div>
+<div>
+<div class="cafc-stat-number">400mg</div>
+<div class="cafc-stat-label">FDA Daily Limit</div>
+</div>
+<div>
+<div class="cafc-stat-number">5h</div>
+<div class="cafc-stat-label">Avg Half-Life</div>
+</div>
+<div>
+<div class="cafc-stat-number">0</div>
+<div class="cafc-stat-label">Data Sent to Server</div>
+</div>
+</div>
+</section>
+
+<!-- Quick Tools Section -->
+<section class="cafc-container" style="padding: 3rem 0;">
+<div class="cafc-section-header">
+<h2>Quick Tools</h2>
+<p>Most popular calculators and trackers.</p>
+</div>
+<div class="cafc-tool-grid" id="cafc-quick-tools">
+<a class="cafc-tool-card" href="./tools/caffeine-calculator.html">
+<div class="cafc-card-body" style="padding: 1.5rem;">
+<div style="font-size: 2rem; margin-bottom: 0.75rem;">☕</div>
+<h3>Caffeine Calculator</h3>
+<p>Log beverages and track against the 400mg FDA limit.</p>
+<div class="cafc-card-meta"><span class="cafc-tag">Calculator</span></div>
+</div>
+</a>
+<a class="cafc-tool-card" href="./tools/half-life-tracker.html">
+<div class="cafc-card-body" style="padding: 1.5rem;">
+<div style="font-size: 2rem; margin-bottom: 0.75rem;">⏱️</div>
+<h3>Half-Life Tracker</h3>
+<p>Visualize caffeine clearance based on your genetics.</p>
+<div class="cafc-card-meta"><span class="cafc-tag">Tracker</span></div>
+</div>
+</a>
+<a class="cafc-tool-card" href="./tools/sleep-estimator.html">
+<div class="cafc-card-body" style="padding: 1.5rem;">
+<div style="font-size: 2rem; margin-bottom: 0.75rem;">😴</div>
+<h3>Sleep Estimator</h3>
+<p>Get your personal caffeine cutoff time for better sleep.</p>
+<div class="cafc-card-meta"><span class="cafc-tag">Estimator</span></div>
+</div>
+</a>
+</div>
+</section>
+
+<!-- All Tools Section -->
+<section class="cafc-container" style="padding: 2rem 0 3rem;">
+<div class="cafc-section-header">
+<h2>All Tools</h2>
+<p>Every calculator, tracker, and comparator in one place.</p>
+</div>
+<div class="cafc-tool-grid" id="cafc-all-tools">
+<a class="cafc-tool-card" href="./tools/caffeine-calculator.html">
+<div class="cafc-card-body" style="padding: 1.5rem;">
+<div style="font-size: 2rem; margin-bottom: 0.75rem;">☕</div>
+<h3>Caffeine Calculator</h3>
+<p>Track daily intake vs FDA limit.</p>
+<div class="cafc-card-meta"><span class="cafc-tag">Calculator</span></div>
+</div>
+</a>
+<a class="cafc-tool-card" href="./tools/half-life-tracker.html">
+<div class="cafc-card-body" style="padding: 1.5rem;">
+<div style="font-size: 2rem; margin-bottom: 0.75rem;">⏱️</div>
+<h3>Half-Life Tracker</h3>
+<p>Caffeine clearance by metabolizer type.</p>
+<div class="cafc-card-meta"><span class="cafc-tag">Tracker</span></div>
+</div>
+</a>
+<a class="cafc-tool-card" href="./tools/sleep-estimator.html">
+<div class="cafc-card-body" style="padding: 1.5rem;">
+<div style="font-size: 2rem; margin-bottom: 0.75rem;">😴</div>
+<h3>Sleep Estimator</h3>
+<p>Personalized cutoff time.</p>
+<div class="cafc-card-meta"><span class="cafc-tag">Estimator</span></div>
+</div>
+</a>
+<a class="cafc-tool-card" href="./tools/pregnancy-limit.html">
+<div class="cafc-card-body" style="padding: 1.5rem;">
+<div style="font-size: 2rem; margin-bottom: 0.75rem;">🤰</div>
+<h3>Pregnancy Limit</h3>
+<p>200mg daily budget by trimester.</p>
+<div class="cafc-card-meta"><span class="cafc-tag">Safety</span></div>
+</div>
+</a>
+<a class="cafc-tool-card" href="./tools/energy-drink-comparator.html">
+<div class="cafc-card-body" style="padding: 1.5rem;">
+<div style="font-size: 2rem; margin-bottom: 0.75rem;">🥤</div>
+<h3>Energy Drink Comparator</h3>
+<p>Caffeine, sugar, cost comparison.</p>
+<div class="cafc-card-meta"><span class="cafc-tag">Comparison</span></div>
+</div>
+</a>
+<a class="cafc-tool-card" href="./tools/withdrawal-timeline.html">
+<div class="cafc-card-body" style="padding: 1.5rem;">
+<div style="font-size: 2rem; margin-bottom: 0.75rem;">📉</div>
+<h3>Withdrawal Timeline</h3>
+<p>Personalized taper schedule.</p>
+<div class="cafc-card-meta"><span class="cafc-tag">Planner</span></div>
+</div>
+</a>
+</div>
+</section>
+
+<!-- INDEX_ARTICLES_START -->
+
+
+
+
+
+<!-- Ad: middle -->
+<div class="cafc-container">
+<div class="cafc-ad-slot" data-ad-slot="middle"><span>Advertisement</span></div>
+</div>
+
+<div class="cafc-container">
+
+<div class="cafc-article-grid">
+<a class="cafc-article-card" href="./blog/seattle-heat-wave-caffeine-toxicity-2026.html">
+<img class="cafc-card-image" src="./images/blog/seattle-heat-wave-caffeine-toxicity-2026.jpg" alt="Seattle Heat Wave Caffeine Toxicity 2026" width="400" height="225" loading="lazy">
+<div class="cafc-card-body">
+<span class="cafc-tag">Caffeine Science</span>
+<h3>Seattle Heat Wave Caffeine Toxicity 2026</h3>
+<p>Seattle hit 95°F last Tuesday. I know that doesn't sound like much to people in Phoenix or Dallas. But Seattle is not built for 95 degrees. We don't h...</p>
+<div class="cafc-card-meta">July 23, 2026</span>
+<span>6 min read</span>
+</div>
+</div>
+</a>
+<a class="cafc-article-card" href="./blog/afternoon-coffee-cost-three-nights-sleep.html">
+<img class="cafc-card-image" src="./images/blog/afternoon-coffee-cost-three-nights-sleep.jpg" alt="Afternoon Coffee Cost Three Nights Sleep" width="400" height="225" loading="lazy">
+<div class="cafc-card-body">
+<span class="cafc-tag">Caffeine Science</span>
+<h3>Afternoon Coffee Cost Three Nights Sleep</h3>
+<p>I used to think caffeine had a six-hour half-life. That was the number I carried in my head, the one that let me drink coffee at 3 PM and tell myself ...</p>
+<div class="cafc-card-meta">July 06, 2026</span>
+<span>6 min read</span>
+</div>
+</div>
+</a>
+<a class="cafc-article-card" href="./blog/seattle-heat-wave-caffeine-toxicity.html">
+<img class="cafc-card-image" src="./images/blog/seattle-heat-wave-caffeine-toxicity.jpg" alt="Seattle Heat Wave Caffeine Toxicity" width="400" height="225" loading="lazy">
+<div class="cafc-card-body">
+<span class="cafc-tag">Caffeine Science</span>
+<h3>Seattle Heat Wave Caffeine Toxicity</h3>
+<p>My Caffeine Habit Nearly Sent Me to the ER During Seattle's Hottest June on Record Alex Morgan I was on my third cold brew of the day when the dizzine...</p>
+<div class="cafc-card-meta">July 06, 2026</span>
+<span>6 min read</span>
+</div>
+</div>
+</a>
+<a class="cafc-article-card" href="./blog/the-monday-i-accidentally-drank-600mg-of-caffeine.html">
+<img class="cafc-card-image" src="./images/blog/the-monday-i-accidentally-drank-600mg-of-caffeine.jpg" alt="The Monday I Accidentally Drank 600Mg Of Caffeine" width="400" height="225" loading="lazy">
+<div class="cafc-card-body">
+<span class="cafc-tag">Caffeine Science</span>
+<h3>The Monday I Accidentally Drank 600Mg Of Caffeine</h3>
+<p>The Monday I Accidentally Drank 600mg of Caffeine Before Noon The pipette did not slip this time. The mistake was much bigger than a smeared calibrati...</p>
+<div class="cafc-card-meta">June 30, 2026</span>
+<span>6 min read</span>
+</div>
+</div>
+</a>
+<a class="cafc-article-card" href="./blog/that-pre-workout-powder-has-400mg-of-caffeine-and-thats-not.html">
+<img class="cafc-card-image" src="./images/blog/that-pre-workout-powder-has-400mg-of-caffeine-and-thats-not.jpg" alt="That Pre Workout Powder Has 400Mg Of Caffeine And Thats Not" width="400" height="225" loading="lazy">
+<div class="cafc-card-body">
+<span class="cafc-tag">Caffeine Science</span>
+<h3>That Pre Workout Powder Has 400Mg Of Caffeine And Thats Not</h3>
+<p>That Pre-Workout Powder Has 400mg of Caffeine. And That's Not Even the Worst Part. 400 milligrams. That's what the label said. One scoop. Four hundred...</p>
+<div class="cafc-card-meta">June 24, 2026</span>
+<span>6 min read</span>
+</div>
+</div>
+</a>
+<a class="cafc-article-card" href="./blog/age-slows-your-cyp1a2.html">
+<img class="cafc-card-image" src="./images/blog/age-slows-your-cyp1a2.jpg" alt="13 Age Slows Your CYP1A2 — CaffeineCheck" width="400" height="225" loading="lazy">
+<div class="cafc-card-body">
+<span class="cafc-tag">Caffeine Science</span>
+<h3>13 Age Slows Your CYP1A2 — CaffeineCheck</h3>
+<p>The first time I noticed it, I was thirty-three. I’d had my usual morning coffee – a 16-ounce pour‑over, about 200 mg of caffeine – and then a second ...</p>
+<div class="cafc-card-meta">June 03, 2026</span>
+<span>6 min read</span>
+</div>
+</div>
+</a>
+</div>
+</div>
+
+
+
+
+
+
+
+
+<!-- INDEX_ARTICLES_END -->
+
+<!-- FAQ Section -->
+<section class="cafc-container" style="padding: 2rem 0 3rem;">
+<div class="cafc-section-header">
+<h2>Common Questions</h2>
+</div>
+<div style="max-width: 800px;">
+<div class="cafc-faq-item">
+<button class="cafc-faq-question" onclick="this.parentElement.classList.toggle('active')">How much caffeine is too much?</button>
+<div class="cafc-faq-answer"><div class="cafc-faq-answer-inner">The FDA recommends 400mg per day for healthy adults. That is about 4 cups of brewed coffee. Pregnant women should stay under 200mg. Teenagers should limit to 100mg.</div></div>
+</div>
+<div class="cafc-faq-item">
+<button class="cafc-faq-question" onclick="this.parentElement.classList.toggle('active')">Is my data private?</button>
+<div class="cafc-faq-answer"><div class="cafc-faq-answer-inner">Yes. All calculations happen in your browser. Your data is stored in localStorage on your own device. We never send it to any server. No accounts, no cookies, no tracking.</div></div>
+</div>
+<div class="cafc-faq-item">
+<button class="cafc-faq-question" onclick="this.parentElement.classList.toggle('active')">What is CYP1A2 and why does it matter?</button>
+<div class="cafc-faq-answer"><div class="cafc-faq-answer-inner">CYP1A2 is the liver enzyme that metabolizes caffeine. Fast metabolizers clear caffeine in 1.5-3 hours. Slow metabolizers take 8-10 hours. If you are slow, 200mg feels like 400mg to a fast metabolizer. Genetics determine which type you are.</div></div>
+</div>
+<div class="cafc-faq-item">
+<button class="cafc-faq-question" onclick="this.parentElement.classList.toggle('active')">Can I use these tools on my phone?</button>
+<div class="cafc-faq-answer"><div class="cafc-faq-answer-inner">Yes. All tools are fully responsive and work on mobile, tablet, and desktop. Your localStorage data syncs across sessions on the same device.</div></div>
+</div>
+<div class="cafc-faq-item">
+<button class="cafc-faq-question" onclick="this.parentElement.classList.toggle('active')">How accurate are the caffeine numbers?</button>
+<div class="cafc-faq-answer"><div class="cafc-faq-answer-inner">Our database uses lab-verified HPLC data from published studies and manufacturer specifications. Actual caffeine content varies by brand, roast level, and brewing method. Use these numbers as estimates, not exact measurements.</div></div>
+</div>
+</div>
+</section>
+
+<!-- Ad: footer -->
+<div class="cafc-container">
+<div class="cafc-ad-slot" data-ad-slot="footer"><span>Advertisement</span></div>
+</div>
+
+<!-- Footer -->
+<footer class="cafc-footer">
+<div class="cafc-container">
+<div class="cafc-footer-grid">
+<div class="cafc-footer-col">
+<h4>Latest Articles</h4>
+<ul id="cafc-footer-articles">
+<li><a href="./blog/index.html">Browse all articles →</a></li>
+</ul>
+</div>
+<div class="cafc-footer-col">
+<h4>Tools</h4>
+<ul>
+<li><a href="./tools/caffeine-calculator.html">Caffeine Calculator</a></li>
+<li><a href="./tools/half-life-tracker.html">Half-Life Tracker</a></li>
+<li><a href="./tools/sleep-estimator.html">Sleep Estimator</a></li>
+<li><a href="./tools/pregnancy-limit.html">Pregnancy Limit</a></li>
+<li><a href="./tools/energy-drink-comparator.html">Energy Drink Comparator</a></li>
+<li><a href="./tools/withdrawal-timeline.html">Withdrawal Timeline</a></li>
+</ul>
+</div>
+<div class="cafc-footer-col">
+<h4>Legal</h4>
+<ul>
+<li><a href="./privacy.html">Privacy Policy</a></li>
+<li><a href="./terms.html">Terms of Use</a></li>
+<li><a href="./disclaimer.html">Disclaimer</a></li>
+<li><a href="./disclosure.html">Affiliate Disclosure</a></li>
+<li><a href="./faq.html">FAQ</a></li>
+<li><a href="./contact.html">Contact</a></li>
+</ul>
+</div>
+</div>
+<div class="cafc-footer-bottom">
+<p>© 2026 CaffeineCheck. All rights reserved.</p>
+<div class="cafc-back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑ Back to top</div>
+</div>
+</div>
+</footer>
+
+<script src="./ads-loader.js"></script>
+<script>
+(function(){
+'use strict';
+
+function heroCalculate() {
+var select = document.getElementById('hero-beverage');
+var mg = parseInt(select.value);
+var resultDiv = document.getElementById('hero-result');
+var resultText = document.getElementById('hero-result-text');
+if (!mg) {
+resultText.textContent = 'Please select a beverage.';
+resultDiv.style.display = 'block';
+return;
+}
+var pct = Math.round((mg / 400) * 100);
+var status = mg > 400 ? 'Over the FDA limit!' : (mg > 300 ? 'Close to limit — be careful.' : (pct > 50 ? 'Moderate dose.' : 'Low dose, you are fine.'));
+var color = mg > 400 ? '#ff6b6b' : (mg > 300 ? '#feca57' : '#1dd1a1');
+resultText.innerHTML = '<strong>' + mg + 'mg caffeine</strong> — ' + pct + '% of daily limit.<br>' + status;
+resultDiv.style.borderLeftColor = color;
+resultDiv.style.display = 'block';
+}
+
+function loadFooterArticles() {
+fetch('./articles.json')
+.then(function(r) { return r.json(); })
+.then(function(data) {
+var articles = Array.isArray(data) ? data : (data.articles || []);
+var fl = document.getElementById('cafc-footer-articles');
+if (fl && articles.length > 0) {
+fl.innerHTML = '';
+articles.slice(0, 5).forEach(function(a) {
+var li = document.createElement('li');
+var link = document.createElement('a');
+link.href = './blog/' + a.slug + '.html';
+link.textContent = a.title;
+li.appendChild(link);
+fl.appendChild(li);
+});
+}
+})
+.catch(function(e) { console.warn(e); });
+}
+
+if (document.readyState === 'loading') {
+document.addEventListener('DOMContentLoaded', loadFooterArticles);
+} else {
+loadFooterArticles();
+}
+
+window.heroCalculate = heroCalculate;
+})();
+</script>
+</body>
+</html>
