@@ -1,0 +1,34 @@
+{
+  "domain": "caffeinecheck.org",
+  "prefix": "cafc",
+  "site_number": "independent",
+  "theme": "Caffeine Intake Tracking & Limits",
+  "author": "Alex Morgan",
+  "author_email": "contact@caffeinecheck.org",
+  "language": "en",
+  "style": {
+    "primary_color": "#1a3a5c",
+    "secondary_color": "#f5f0e8",
+    "accent_color": "#c75b2a",
+    "border_radius": "6px",
+    "font_primary": "Inter, system-ui, sans-serif",
+    "font_mono": "JetBrains Mono, monospace",
+    "layout_home": "H",
+    "layout_tools_home": "G",
+    "layout_blog_home": "A",
+    "layout_article": "C",
+    "layout_tool": "G",
+    "layout_about": "B",
+    "layout_contact": "D",
+    "layout_faq": "A"
+  },
+  "social": {
+    "twitter": "",
+    "github": "",
+    "linkedin": ""
+  },
+  "ads": {
+    "enabled": true,
+    "provider": "adsense"
+  }
+}
