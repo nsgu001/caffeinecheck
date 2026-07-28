@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tools — CaffeineCheck</title>
+  <meta name="description" content="Free caffeine tracking tools: intake calculator, half-life tracker, sleep estimator, pregnancy limit checker, energy drink comparator, and withdrawal timeline.">
+  <link rel="canonical" href="https://caffeinecheck.org/tools/">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+
+  <!-- OG5 -->
+  <meta property="og:title" content="Tools — CaffeineCheck">
+  <meta property="og:description" content="Free caffeine tracking tools with real-time calculations, localStorage, and data visualization.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://caffeinecheck.org/tools/">
+  <meta property="og:image" content="https://caffeinecheck.org/images/og-default.jpg">
+
+  <link rel="stylesheet" href="../style.css">
+
+  <!-- CollectionPage Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "CaffeineCheck Tools",
+    "url": "https://caffeinecheck.org/tools/",
+    "description": "Collection of caffeine tracking and analysis tools.",
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Caffeine Intake Calculator", "url": "https://caffeinecheck.org/tools/caffeine-calculator.html"},
+        {"@type": "ListItem", "position": 2, "name": "Caffeine Half-Life Tracker", "url": "https://caffeinecheck.org/tools/half-life-tracker.html"},
+        {"@type": "ListItem", "position": 3, "name": "Sleep Impact Estimator", "url": "https://caffeinecheck.org/tools/sleep-estimator.html"},
+        {"@type": "ListItem", "position": 4, "name": "Pregnancy Caffeine Limit", "url": "https://caffeinecheck.org/tools/pregnancy-limit.html"},
+        {"@type": "ListItem", "position": 5, "name": "Energy Drink Comparator", "url": "https://caffeinecheck.org/tools/energy-drink-comparator.html"},
+        {"@type": "ListItem", "position": 6, "name": "Caffeine Withdrawal Timeline", "url": "https://caffeinecheck.org/tools/withdrawal-timeline.html"}
+      ]
+    }
+  }
+  </script>
+
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://caffeinecheck.org/"},
+      {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://caffeinecheck.org/tools/"}
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="cafc-nav">
+    <div class="cafc-container cafc-nav-inner">
+      <a href="../index.html" class="cafc-logo">Caffeine<span>Check</span></a>
+      <button class="cafc-nav-toggle" onclick="document.querySelector('.cafc-nav-links').classList.toggle('active')" aria-label="Toggle menu">☰</button>
+      <ul class="cafc-nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="./index.html" class="active">Tools</a></li>
+        <li><a href="../blog/index.html">Blog</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+        <li><a href="../faq.html">FAQ</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Tools Header -->
+  <header class="cafc-section-header" style="padding-top: 3rem;">
+    <div class="cafc-container">
+      <h2>Caffeine Tools</h2>
+      <p>All data stays in your browser. We never see your numbers.</p>
+    </div>
+  </header>
+
+  <!-- Ad: tool_top -->
+  <div class="cafc-container">
+    <div class="cafc-ad-slot" data-ad-slot="tool_top"><span>Advertisement</span></div>
+  </div>
+
+  <!-- Tools Grid (Layout G: Resource Library) -->
+  <main class="cafc-container" style="padding-bottom: 3rem;">
+    <div class="cafc-tool-grid" id="cafc-tools-grid">
+      <!-- Tool 1: Caffeine Calculator -->
+      <a class="cafc-tool-card" href="./caffeine-calculator.html">
+        <div class="cafc-card-body" style="padding: 1.5rem;">
+          <div style="font-size: 2rem; margin-bottom: 0.75rem;">☕</div>
+          <h3>Caffeine Intake Calculator</h3>
+          <p>Track your daily caffeine from coffee, tea, energy drinks, and more. Compare against the FDA 400mg limit.</p>
+          <div class="cafc-card-meta">
+            <span class="cafc-tag">Calculator</span>
+            <span>Local Storage</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Tool 2: Half-Life Tracker -->
+      <a class="cafc-tool-card" href="./half-life-tracker.html">
+        <div class="cafc-card-body" style="padding: 1.5rem;">
+          <div style="font-size: 2rem; margin-bottom: 0.75rem;">⏱️</div>
+          <h3>Half-Life Tracker</h3>
+          <p>Visualize caffeine clearance from your body based on your CYP1A2 metabolizer status. See when you're truly caffeine-free.</p>
+          <div class="cafc-card-meta">
+            <span class="cafc-tag">Tracker</span>
+            <span>SVG Chart</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Tool 3: Sleep Estimator -->
+      <a class="cafc-tool-card" href="./sleep-estimator.html">
+        <div class="cafc-card-body" style="padding: 1.5rem;">
+          <div style="font-size: 2rem; margin-bottom: 0.75rem;">😴</div>
+          <h3>Sleep Impact Estimator</h3>
+          <p>Estimate how your afternoon coffee affects tonight's sleep. Get a personalized cutoff time based on your sensitivity.</p>
+          <div class="cafc-card-meta">
+            <span class="cafc-tag">Estimator</span>
+            <span>Personalized</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Tool 4: Pregnancy Limit -->
+      <a class="cafc-tool-card" href="./pregnancy-limit.html">
+        <div class="cafc-card-body" style="padding: 1.5rem;">
+          <div style="font-size: 2rem; margin-bottom: 0.75rem;">🤰</div>
+          <h3>Pregnancy Caffeine Limit</h3>
+          <p>Stay within the 200mg NHS/FDA pregnancy limit. Budget your daily caffeine by beverage type and trimester.</p>
+          <div class="cafc-card-meta">
+            <span class="cafc-tag">Safety</span>
+            <span>Trimester-aware</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Tool 5: Energy Drink Comparator -->
+      <a class="cafc-tool-card" href="./energy-drink-comparator.html">
+        <div class="cafc-card-body" style="padding: 1.5rem;">
+          <div style="font-size: 2rem; margin-bottom: 0.75rem;">🥤</div>
+          <h3>Energy Drink Comparator</h3>
+          <p>Compare caffeine, taurine, sugar, and stimulants across popular energy drinks. Cost-per-mg analysis included.</p>
+          <div class="cafc-card-meta">
+            <span class="cafc-tag">Comparison</span>
+            <span>Database</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Tool 6: Withdrawal Timeline -->
+      <a class="cafc-tool-card" href="./withdrawal-timeline.html">
+        <div class="cafc-card-body" style="padding: 1.5rem;">
+          <div style="font-size: 2rem; margin-bottom: 0.75rem;">📉</div>
+          <h3>Withdrawal Timeline</h3>
+          <p>Plan your caffeine taper. See symptom severity by daily dose and generate a personalized tapering schedule.</p>
+          <div class="cafc-card-meta">
+            <span class="cafc-tag">Planner</span>
+            <span>Taper Schedule</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </main>
+
+  <!-- Tool Selection Guide -->
+  <section class="cafc-container" style="padding: 2rem 0 3rem;">
+    <div class="cafc-section-header">
+      <h2>Which Tool Do You Need?</h2>
+    </div>
+    <div class="cafc-tool-grid-2">
+      <div class="cafc-tool-card" style="cursor: default;">
+        <div class="cafc-card-body" style="padding: 1.5rem;">
+          <h3>🌅 Morning Routine</h3>
+          <p><strong>Caffeine Calculator</strong> — Log your coffee, tea, and pre-workout. See your running total vs the 400mg FDA limit before you reach for that second cup.</p>
+        </div>
+      </div>
+      <div class="cafc-tool-card" style="cursor: default;">
+        <div class="cafc-card-body" style="padding: 1.5rem;">
+          <h3>🌙 Sleep Worries</h3>
+          <p><strong>Sleep Estimator + Half-Life Tracker</strong> — It's 4pm. Should you have that latte? Check your predicted sleep latency and when caffeine actually clears your system.</p>
+        </div>
+      </div>
+      <div class="cafc-tool-card" style="cursor: default;">
+        <div class="cafc-card-body" style="padding: 1.5rem;">
+          <h3>🤰 Expecting?</h3>
+          <p><strong>Pregnancy Limit Tool</strong> — Budget your 200mg daily allowance across beverages. Know exactly which drinks are safe and which push you over.</p>
+        </div>
+      </div>
+      <div class="cafc-tool-card" style="cursor: default;">
+        <div class="cafc-card-body" style="padding: 1.5rem;">
+          <h3>🔍 Shopping Aisle</h3>
+          <p><strong>Energy Drink Comparator</strong> — Compare caffeine-per-dollar, sugar content, and crash risk before you buy. No marketing hype, just numbers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Privacy Note -->
+  <section class="cafc-container" style="padding: 0 0 3rem;">
+    <div style="background: var(--cafc-bg-warm); border: 1px solid var(--cafc-border); border-radius: var(--cafc-radius-lg); padding: 1.5rem; text-align: center;">
+      <p style="font-size: 1.1rem; font-weight: 600; color: var(--cafc-primary); margin-bottom: 0.5rem;">🔒 Privacy First</p>
+      <p style="color: var(--cafc-text-muted); font-size: 0.95rem; line-height: 1.5;">All calculations happen in your browser. Your caffeine data is stored in your device's localStorage — we never send it to any server. No accounts, no tracking, no data collection.</p>
+    </div>
+  </section>
+
+
+
+  <!-- TOOLS_ARTICLES_START -->
+
+
+
+
+
+  <!-- Ad: tool_middle -->
+  <div class="cafc-container">
+    <div class="cafc-ad-slot" data-ad-slot="tool_middle"><span>Advertisement</span></div>
+  </div>
+
+<div class="cafc-container">
+<div class="cafc-article-grid">
+<a class="cafc-article-card" href="../blog/caffeine-fat-oxidation-and-the-overweight-athlete.html">
+<div class="cafc-card-body">
+<h3>12 Caffeine, Fat Oxidation, and the Overweight Athlete — CaffeineCheck</h3>
+<p>I asked him how much caffeine. “200 mg,” he said. “Sometimes 400.”</p>
+<div class="cafc-card-meta">May 24, 2026</span>
+<span>2026-02-07</span>
+</div>
+</div>
+</a>
+<a class="cafc-article-card" href="../blog/growing-brains-on-caffeine.html">
+<div class="cafc-card-body">
+<h3>07 Growing Brains on Caffeine — CaffeineCheck</h3>
+<p>The research monkey sat in a cage with a feeding tube. I saw the video during a lecture at a neuroscience conference in 2019.</p>
+<div class="cafc-card-meta">May 03, 2026</span>
+<span>2026-02-07</span>
+</div>
+</div>
+</a>
+<a class="cafc-article-card" href="../blog/pre-workout-powder-400mg-caffeine.html">
+<div class="cafc-card-body">
+<h3>10 Pre-Workout Powder: 400mg Caffeine + ?? — CaffeineCheck</h3>
+<p>The scoop was larger than I expected. I’d bought the tub online after reading reviews that promised “laser focus” and “unstoppable energy.” The label ...</p>
+<div class="cafc-card-meta">March 26, 2026</span>
+<span>2026-02-07</span>
+</div>
+</div>
+</a>
+<a class="cafc-article-card" href="../blog/pregnancy-when-caffeines-half-life-triples.html">
+<div class="cafc-card-body">
+<h3>14 Pregnancy: When Caffeine's Half-Life Triples — CaffeineCheck</h3>
+<p>The pregnancy test had two lines. Sam held it up to the light. “Is that positive?” she asked. I took it from her. The second line was faint but there....</p>
+<div class="cafc-card-meta">March 18, 2026</span>
+<span>2026-02-07</span>
+</div>
+</div>
+</a>
+<a class="cafc-article-card" href="../blog/school-lunchs-hidden-caffeine.html">
+<div class="cafc-card-body">
+<h3>08 School Lunch’s Hidden Caffeine — CaffeineCheck</h3>
+<p>It sold energy drinks. Not the small cans. The tall ones. Sixteen ounces. Labels that screamed “EXTREME” and “POWER” and “ZERO SUGAR.” Bright neon col...</p>
+<div class="cafc-card-meta">March 15, 2026</span>
+<span>2026-02-07</span>
+</div>
+</div>
+</a>
+<a class="cafc-article-card" href="../blog/slow-metabolizers-dilemma-cyp1a2-cc-and-heart-risk.html">
+<div class="cafc-card-body">
+<h3>03 Slow Metabolizer‘s Dilemma: CYP1A2 CC and Heart Risk — CaffeineCheck</h3>
+<p>The mother’s name was Denise. Her son, Tyler, was seventeen. He played football. He was six feet tall, two hundred pounds, no known health problems.</p>
+<div class="cafc-card-meta">March 13, 2026</span>
+<span>2026-02-07</span>
+</div>
+</div>
+</a>
+</div>
+</div>
+
+
+
+
+
+
+
+<!-- TOOLS_ARTICLES_END -->
+
+  <!-- Ad: tool_bottom -->
+  <div class="cafc-container">
+    <div class="cafc-ad-slot" data-ad-slot="tool_bottom"><span>Advertisement</span></div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="cafc-footer">
+    <div class="cafc-container">
+      <div class="cafc-footer-grid">
+        <div class="cafc-footer-col">
+          <h4>Latest Articles</h4>
+          <ul id="cafc-footer-articles">
+            <li><a href="../blog/index.html">Browse all articles →</a></li>
+          </ul>
+        </div>
+        <div class="cafc-footer-col">
+          <h4>Tools</h4>
+          <ul>
+            <li><a href="./caffeine-calculator.html">Caffeine Calculator</a></li>
+            <li><a href="./half-life-tracker.html">Half-Life Tracker</a></li>
+            <li><a href="./sleep-estimator.html">Sleep Estimator</a></li>
+            <li><a href="./pregnancy-limit.html">Pregnancy Limit</a></li>
+            <li><a href="./energy-drink-comparator.html">Energy Drink Comparator</a></li>
+            <li><a href="./withdrawal-timeline.html">Withdrawal Timeline</a></li>
+          </ul>
+        </div>
+        <div class="cafc-footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="../privacy.html">Privacy Policy</a></li>
+            <li><a href="../terms.html">Terms of Use</a></li>
+            <li><a href="../disclaimer.html">Disclaimer</a></li>
+            <li><a href="../disclosure.html">Affiliate Disclosure</a></li>
+            <li><a href="../faq.html">FAQ</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="cafc-footer-bottom">
+        <p>© 2026 CaffeineCheck. All rights reserved.</p>
+        <div class="cafc-back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑ Back to top</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../ads-loader.js"></script>
+  <script>
+  (function() {
+    'use strict';
+
+    // Load popular articles
+    fetch('../articles.json')
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        var articles = Array.isArray(data) ? data : (data.articles || []);
+        var container = document.getElementById('cafc-popular-articles');
+        if (container && articles.length > 0) {
+          container.innerHTML = '';
+          articles.slice(0, 3).forEach(function(a) {
+            var card = document.createElement('a');
+            card.className = 'cafc-article-card';
+            card.href = '../blog/' + a.slug + '.html';
+            card.innerHTML = '<div class="cafc-card-body"><h3>' + a.title + '</h3><p>' + (a.excerpt || '') + '</p><div class="cafc-card-meta"><span class="cafc-tag">' + (a.category || 'Article') + '</span><span>' + a.date + '</span></div></div>';
+            container.appendChild(card);
+          });
+        }
+
+        // Update footer articles
+        var footerList = document.getElementById('cafc-footer-articles');
+        if (footerList && articles.length > 0) {
+          footerList.innerHTML = '';
+          articles.slice(0, 5).forEach(function(a) {
+            var li = document.createElement('li');
+            var link = document.createElement('a');
+            link.href = '../blog/' + a.slug + '.html';
+            link.textContent = a.title;
+            li.appendChild(link);
+            footerList.appendChild(li);
+          });
+        }
+      })
+      .catch(function(err) {
+        console.warn('Failed to load articles:', err);
+      });
+  })();
+  </script>
+</body>
+</html>
