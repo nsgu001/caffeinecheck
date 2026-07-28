@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caffeine Withdrawal Timeline — CaffeineCheck</title>
+<meta name="description" content="Plan your caffeine taper. See symptom severity by daily dose and generate a personalized tapering schedule.">
+<link rel="canonical" href="https://caffeinecheck.org/tools/withdrawal-timeline.html">
+<link rel="icon" type="image/x-icon" href="../favicon.ico">
+<meta property="og:title" content="Caffeine Withdrawal Timeline — CaffeineCheck">
+<meta property="og:description" content="Personalized caffeine taper schedule. Know what to expect when you cut back.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://caffeinecheck.org/tools/withdrawal-timeline.html">
+<meta property="og:image" content="https://caffeinecheck.org/images/og-default.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Caffeine Withdrawal Timeline — CaffeineCheck">
+  <meta name="twitter:description" content="Personalized caffeine taper schedule. Know what to expect when you cut back.">
+  <meta name="twitter:image" content="https://caffeinecheck.org/images/og-default.jpg">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://caffeinecheck.org/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://caffeinecheck.org/tools/"},{"@type":"ListItem","position":3,"name":"Withdrawal Timeline","item":"https://caffeinecheck.org/tools/withdrawal-timeline.html"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Caffeine Withdrawal Timeline","applicationCategory":"HealthApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+</head>
+<body>
+<nav class="cafc-nav"><div class="cafc-container cafc-nav-inner"><a href="../index.html" class="cafc-logo">Caffeine<span>Check</span></a><button class="cafc-nav-toggle" onclick="document.querySelector('.cafc-nav-links').classList.toggle('active')">☰</button><ul class="cafc-nav-links"><li><a href="../index.html">Home</a></li><li><a href="./index.html">Tools</a></li><li><a href="../blog/index.html">Blog</a></li><li><a href="../about.html">About</a></li><li><a href="../contact.html">Contact</a></li><li><a href="../faq.html">FAQ</a></li></ul></div></nav>
+<div class="cafc-container"><nav class="cafc-breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="./index.html">Tools</a><span>/</span><span>Withdrawal Timeline</span></nav></div>
+<div class="cafc-tool-hero"><div class="cafc-container"><h1>Caffeine Withdrawal Timeline</h1><p>Plan your taper. Know exactly what to expect when you cut back on caffeine.</p></div></div>
+<div class="cafc-container"><div class="cafc-ad-slot" data-ad-slot="tool_top"><span>Advertisement</span></div></div>
+
+<main class="cafc-container" style="padding:2rem 0 3rem;">
+<div class="cafc-tool-panel"><h2 style="font-size:1.2rem;font-weight:700;color:var(--cafc-primary);margin-bottom:1.5rem;">Your Current Habit</h2>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;">
+<div class="cafc-form-group"><label for="current-dose">Current Daily Dose (mg)</label><input type="number" id="current-dose" value="300" min="50" max="2000"></div>
+<div class="cafc-form-group"><label for="target-dose">Target Dose (mg)</label><input type="number" id="target-dose" value="100" min="0" max="500"></div>
+<div class="cafc-form-group"><label for="taper-days">Taper Duration (days)</label><select id="taper-days"><option value="7">7 days — Fast taper</option><option value="14" selected>14 days — Moderate</option><option value="21">21 days — Gradual</option><option value="30">30 days — Slow & steady</option></select></div>
+<div class="cafc-form-group"><label for="withdraw-start">Start Date</label><input type="date" id="withdraw-start"></div>
+</div>
+<div class="cafc-btn-group"><button class="cafc-btn cafc-btn-primary" onclick="generateTaper()">Generate Taper Schedule</button><button class="cafc-btn cafc-btn-secondary" onclick="resetWithdraw()">Reset</button></div>
+</div>
+
+<div class="cafc-result-box" id="result-box" style="margin-top:2rem;"><h3>Withdrawal Dashboard</h3>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin:1.5rem 0;">
+<div style="text-align:center;background:var(--cafc-bg-warm);border-radius:var(--cafc-radius-lg);padding:1.5rem;"><div style="font-size:2.5rem;font-weight:800;color:var(--cafc-accent);" id="dash-onset">12-24h</div><p style="font-size:0.85rem;color:var(--cafc-text-muted);margin-top:0.5rem;">Symptom Onset</p></div>
+<div style="text-align:center;background:var(--cafc-bg-warm);border-radius:var(--cafc-radius-lg);padding:1.5rem;"><div style="font-size:2.5rem;font-weight:800;color:var(--cafc-accent);" id="dash-peak">20-51h</div><p style="font-size:0.85rem;color:var(--cafc-text-muted);margin-top:0.5rem;">Peak Severity</p></div>
+<div style="text-align:center;background:var(--cafc-bg-warm);border-radius:var(--cafc-radius-lg);padding:1.5rem;"><div style="font-size:2.5rem;font-weight:800;color:var(--cafc-accent);" id="dash-duration">2-9 days</div><p style="font-size:0.85rem;color:var(--cafc-text-muted);margin-top:0.5rem;">Total Duration</p></div>
+<div style="text-align:center;background:var(--cafc-bg-warm);border-radius:var(--cafc-radius-lg);padding:1.5rem;"><div style="font-size:2.5rem;font-weight:800;color:var(--cafc-primary);" id="dash-severity">Moderate</div><p style="font-size:0.85rem;color:var(--cafc-text-muted);margin-top:0.5rem;">Expected Severity</p></div>
+</div>
+<div class="cafc-chart-container"><svg id="taper-chart" width="100%" height="280" viewBox="0 0 800 280" style="font-family:var(--cafc-font-mono);font-size:11px;"><rect x="60" y="20" width="700" height="220" fill="var(--cafc-secondary)" rx="4"/><line x1="60" y1="240" x2="760" y2="240" stroke="var(--cafc-border-strong)" stroke-width="1"/><line x1="60" y1="20" x2="60" y2="240" stroke="var(--cafc-border-strong)" stroke-width="1"/><text x="40" y="245" fill="var(--cafc-text-muted)">0mg</text><text x="25" y="30" fill="var(--cafc-text-muted)">Dose</text><text x="400" y="275" fill="var(--cafc-text-muted)" text-anchor="middle">Taper Days</text><g id="taper-lines"></g></svg></div>
+<div id="taper-schedule" style="margin-top:1.5rem;"></div>
+</div>
+
+<div class="cafc-tool-panel" style="margin-top:2rem;"><h3 style="font-size:1.1rem;font-weight:700;color:var(--cafc-primary);margin-bottom:1rem;">Saved Schedules</h3><div id="saved-schedules"><p style="color:var(--cafc-text-muted);font-size:0.9rem;">Your generated schedules are saved automatically.</p></div><div class="cafc-btn-group" style="margin-top:1rem;"><button class="cafc-btn cafc-btn-secondary" onclick="exportTaper()">Export Schedule</button><button class="cafc-btn cafc-btn-accent" onclick="clearTaper()" style="background:#dc2626;">Clear All</button></div></div>
+</main>
+
+<div class="cafc-container">
+  <div class="cafc-ad-slot" data-ad-slot="tool_middle"><span>Advertisement</span></div>
+</div>
+
+<div class="cafc-container"><div class="cafc-ad-slot" data-ad-slot="tool_bottom"><span>Advertisement</span></div></div>
+<div class="cafc-container" style="padding:2rem 0;"><div style="display:grid;grid-template-columns:2fr 1fr;gap:2rem;"><div><h3 style="font-size:1.1rem;font-weight:700;color:var(--cafc-primary);margin-bottom:1rem;">Related Articles</h3><ul class="cafc-related-list" id="related-articles"><li><a href="../blog/index.html"><span>Browse articles →</span></a></li></ul></div><div><h3 style="font-size:1.1rem;font-weight:700;color:var(--cafc-primary);margin-bottom:1rem;">Other Tools</h3><ul class="cafc-tool-list" id="other-tools"><li><a href="./caffeine-calculator.html"><span>Caffeine Calculator</span></a></li><li><a href="./half-life-tracker.html"><span>Half-Life Tracker</span></a></li><li><a href="./sleep-estimator.html"><span>Sleep Estimator</span></a></li><li><a href="./pregnancy-limit.html"><span>Pregnancy Limit</span></a></li><li><a href="./energy-drink-comparator.html"><span>Energy Drink Comparator</span></a></li></ul></div></div></div>
+
+<div class="cafc-container" style="padding: 2rem 0;">
+<div class="cafc-tool-panel">
+<h2 style="font-size:1.3rem;font-weight:700;color:var(--cafc-primary);margin-bottom:1.5rem;">How It Works</h2>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;">
+<div>
+<h4 style="color:var(--cafc-primary);font-size:1rem;margin-bottom:0.5rem;">🔬 Calculation Principle</h4>
+<p style="font-size:0.9rem;color:var(--cafc-text-muted);line-height:1.6;">The taper schedule uses linear dose reduction: (current - target) / days = daily reduction. Symptom severity is estimated from caffeine dose: >500mg = Severe, >300mg = Moderate, >150mg = Mild. Onset, peak, and duration are derived from clinical withdrawal literature.</p>
+</div>
+<div>
+<h4 style="color:var(--cafc-primary);font-size:1rem;margin-bottom:0.5rem;">📝 How to Use</h4>
+<p style="font-size:0.9rem;color:var(--cafc-text-muted);line-height:1.6;">Enter your current daily dose, target dose, and preferred taper duration (7-30 days). Select a start date. The generator produces a day-by-day schedule with target doses and reduction steps. The dashboard shows expected symptom onset, peak severity, and total duration.</p>
+</div>
+<div>
+<h4 style="color:var(--cafc-primary);font-size:1rem;margin-bottom:0.5rem;">💡 Pro Tips</h4>
+<p style="font-size:0.9rem;color:var(--cafc-text-muted);line-height:1.6;">• Slower tapers (21-30 days) = milder withdrawal.<br>• Fast tapers (7 days) = intense but brief symptoms.<br>• Headaches peak at 20-51 hours after last dose.<br>• Export your schedule to stay accountable.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="cafc-container" style="padding: 2rem 0;">
+<div style="background: var(--cafc-bg-warm); border: 1px solid var(--cafc-border); border-radius: var(--cafc-radius-lg); padding: 1.5rem; text-align: center;">
+<p style="font-weight: 600; color: var(--cafc-primary); margin-bottom: 1rem; font-size: 1rem;">Share this tool</p>
+<div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+<a href="https://twitter.com/intent/tweet?text=Caffeine Withdrawal Timeline&url=https://caffeinecheck.org/tools/withdrawal-timeline.html" target="_blank" rel="noopener" class="cafc-btn cafc-btn-secondary" style="font-size: 0.85rem;">𝕏 Twitter</a>
+<a href="https://www.facebook.com/sharer/sharer.php?u=https://caffeinecheck.org/tools/withdrawal-timeline.html" target="_blank" rel="noopener" class="cafc-btn cafc-btn-secondary" style="font-size: 0.85rem;">Facebook</a>
+<a href="https://www.linkedin.com/sharing/share-offsite/?url=https://caffeinecheck.org/tools/withdrawal-timeline.html" target="_blank" rel="noopener" class="cafc-btn cafc-btn-secondary" style="font-size: 0.85rem;">LinkedIn</a>
+<a href="mailto:?subject=Caffeine Withdrawal Timeline&body=https://caffeinecheck.org/tools/withdrawal-timeline.html" class="cafc-btn cafc-btn-secondary" style="font-size: 0.85rem;">Email</a>
+<button onclick="navigator.clipboard.writeText('https://caffeinecheck.org/tools/withdrawal-timeline.html').then(function(){alert('Link copied!');})" class="cafc-btn cafc-btn-secondary" style="font-size: 0.85rem;">Copy Link</button>
+</div>
+</div>
+</div>
+<footer class="cafc-footer"><div class="cafc-container"><div class="cafc-footer-grid"><div class="cafc-footer-col"><h4>Latest Articles</h4><ul id="cafc-footer-articles"><li><a href="../blog/index.html">Browse all articles →</a></li></ul></div><div class="cafc-footer-col"><h4>Tools</h4><ul><li><a href="./caffeine-calculator.html">Caffeine Calculator</a></li><li><a href="./half-life-tracker.html">Half-Life Tracker</a></li><li><a href="./sleep-estimator.html">Sleep Estimator</a></li><li><a href="./pregnancy-limit.html">Pregnancy Limit</a></li><li><a href="./energy-drink-comparator.html">Energy Drink Comparator</a></li><li><a href="./withdrawal-timeline.html">Withdrawal Timeline</a></li></ul></div><div class="cafc-footer-col"><h4>Legal</h4><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms of Use</a></li><li><a href="../disclaimer.html">Disclaimer</a></li><li><a href="../disclosure.html">Affiliate Disclosure</a></li><li><a href="../faq.html">FAQ</a></li><li><a href="../contact.html">Contact</a></li></ul></div></div><div class="cafc-footer-bottom"><p>© 2026 CaffeineCheck. All rights reserved.</p><div class="cafc-back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Back to top</div></div></div></footer>
+
+<script src="../ads-loader.js"></script>
+<script>
+(function(){
+'use strict';
+var DB_KEY='taper_schedules_v1';
+document.getElementById('withdraw-start').valueAsDate=new Date();
+function generateTaper(){var current=parseInt(document.getElementById('current-dose').value)||300;var target=parseInt(document.getElementById('target-dose').value)||100;var days=parseInt(document.getElementById('taper-days').value)||14;var start=document.getElementById('withdraw-start').value||new Date().toISOString().split('T')[0];var reduction=(current-target)/days;var schedule=[];for(var i=0;i<=days;i++){var dose=Math.max(current-(reduction*i),target);var date=new Date(start);date.setDate(date.getDate()+i);schedule.push({day:i,dose:Math.round(dose),date:date.toISOString().split('T')[0]});}renderDashboard(current,schedule);renderTaperChart(schedule);renderScheduleTable(schedule);saveSchedule({id:Date.now(),current:current,target:target,days:days,start:start,schedule:schedule,date:new Date().toISOString()});document.getElementById('result-box').classList.add('active');}
+function renderDashboard(current,schedule){var severity=current>500?'Severe':(current>300?'Moderate':(current>150?'Mild':'Minimal'));var onset=current>400?'12-24h':(current>200?'16-30h':'20-36h');var peak=current>400?'20-51h':(current>200?'24-48h':'30-60h');var duration=current>400?'2-9 days':(current>200?'2-7 days':'1-5 days');document.getElementById('dash-severity').textContent=severity;document.getElementById('dash-onset').textContent=onset;document.getElementById('dash-peak').textContent=peak;document.getElementById('dash-duration').textContent=duration;}
+function renderTaperChart(schedule){var g=document.getElementById('taper-lines');g.innerHTML='';var maxDose=schedule[0].dose;var maxDay=schedule.length-1;var path='';schedule.forEach(function(s,i){var x=60+(s.day/maxDay)*700;var y=240-(s.dose/maxDose)*220;if(i===0)path='M'+x+' '+y;else path+=' L'+x+' '+y;});var line=document.createElementNS('http://www.w3.org/2000/svg','path');line.setAttribute('d',path);line.setAttribute('fill','none');line.setAttribute('stroke','var(--cafc-accent)');line.setAttribute('stroke-width','3');g.appendChild(line);var areaPath=path+' L'+(60+700)+' 240 L60 240 Z';var area=document.createElementNS('http://www.w3.org/2000/svg','path');area.setAttribute('d',areaPath);area.setAttribute('fill','var(--cafc-accent)');area.setAttribute('opacity','0.15');g.appendChild(area);}
+function renderScheduleTable(schedule){var div=document.getElementById('taper-schedule');div.innerHTML='<div style="overflow-x:auto;"><table class="cafc-table"><thead><tr><th>Day</th><th>Date</th><th>Target Dose</th><th>Reduction</th></tr></thead><tbody>'+schedule.map(function(s,i){var red=i===0?'-':(schedule[i-1].dose-s.dose)+'mg';return '<tr><td>'+s.day+'</td><td>'+s.date+'</td><td><strong>'+s.dose+'mg</strong></td><td>'+red+'</td></tr>';}).join('')+'</tbody></table></div>';}
+function saveSchedule(sch){var schs=JSON.parse(localStorage.getItem(DB_KEY)||'[]');schs.push(sch);localStorage.setItem(DB_KEY,JSON.stringify(schs));renderSaved();}
+function renderSaved(){var schs=JSON.parse(localStorage.getItem(DB_KEY)||'[]');var div=document.getElementById('saved-schedules');if(schs.length===0){div.innerHTML='<p style="color:var(--cafc-text-muted);font-size:0.9rem;">No saved schedules yet.</p>';return;}div.innerHTML='<div style="max-height:200px;overflow-y:auto;"><table class="cafc-table"><thead><tr><th>Date</th><th>Current</th><th>Target</th><th>Days</th></tr></thead><tbody>'+schs.slice(-10).reverse().map(function(s){return '<tr><td>'+s.date.slice(0,10)+'</td><td>'+s.current+'mg</td><td>'+s.target+'mg</td><td>'+s.days+'</td></tr>';}).join('')+'</tbody></table></div>';}
+function resetWithdraw(){document.getElementById('current-dose').value='300';document.getElementById('target-dose').value='100';document.getElementById('taper-days').value='14';document.getElementById('withdraw-start').valueAsDate=new Date();document.getElementById('result-box').classList.remove('active');}
+function clearTaper(){if(!confirm('Clear ALL saved schedules?'))return;localStorage.removeItem(DB_KEY);renderSaved();}
+function exportTaper(){var schs=JSON.parse(localStorage.getItem(DB_KEY)||'[]');if(schs.length===0){alert('No data.');return;}var last=schs[schs.length-1];var csv='Day,Date,Dose(mg)\n';last.schedule.forEach(function(s){csv+=s.day+','+s.date+','+s.dose+'\n';});var blob=new Blob([csv],{type:'text/csv'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='taper-schedule.csv';a.click();}
+function loadRelatedArticles(){fetch('../articles.json').then(function(r){return r.json();}).then(function(data){var articles=Array.isArray(data)?data:(data.articles||[]);var list=document.getElementById('related-articles');if(list&&articles.length>0){list.innerHTML='';articles.slice(0,3).forEach(function(a){var li=document.createElement('li');var link=document.createElement('a');link.href='../blog/'+a.slug+'.html';var img=document.createElement('img');img.src='../images/blog/'+a.slug+'.jpg';img.alt=a.title;img.width=60;img.height=45;img.loading='lazy';var span=document.createElement('span');span.textContent=a.title;link.appendChild(img);link.appendChild(span);li.appendChild(link);list.appendChild(li);});}}).catch(function(e){console.warn(e);});}
+function loadFooterArticles(){fetch('../articles.json').then(function(r){return r.json();}).then(function(data){var articles=Array.isArray(data)?data:(data.articles||[]);var fl=document.getElementById('cafc-footer-articles');if(fl&&articles.length>0){fl.innerHTML='';articles.slice(0,5).forEach(function(a){var li=document.createElement('li');var link=document.createElement('a');link.href='../blog/'+a.slug+'.html';link.textContent=a.title;li.appendChild(link);fl.appendChild(li);});}}).catch(function(e){console.warn(e);});}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){renderSaved();loadRelatedArticles();loadFooterArticles();});}else{renderSaved();loadRelatedArticles();loadFooterArticles();}
+})();
+</script>
+</body>
+</html>
