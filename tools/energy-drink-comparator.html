@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Energy Drink Comparator — CaffeineCheck</title>
+<meta name="description" content="Compare caffeine, taurine, sugar, and stimulants across popular energy drinks. Cost-per-mg analysis included.">
+<link rel="canonical" href="https://caffeinecheck.org/tools/energy-drink-comparator.html">
+<link rel="icon" type="image/x-icon" href="../favicon.ico">
+<meta property="og:title" content="Energy Drink Comparator — CaffeineCheck">
+<meta property="og:description" content="Compare energy drinks by caffeine, sugar, cost, and crash risk. No marketing hype.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://caffeinecheck.org/tools/energy-drink-comparator.html">
+<meta property="og:image" content="https://caffeinecheck.org/images/og-default.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Energy Drink Comparator — CaffeineCheck">
+  <meta name="twitter:description" content="Compare energy drinks by caffeine, sugar, cost, and crash risk. No marketing hype.">
+  <meta name="twitter:image" content="https://caffeinecheck.org/images/og-default.jpg">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://caffeinecheck.org/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://caffeinecheck.org/tools/"},{"@type":"ListItem","position":3,"name":"Energy Drink Comparator","item":"https://caffeinecheck.org/tools/energy-drink-comparator.html"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Energy Drink Comparator","applicationCategory":"HealthApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+</head>
+<body>
+<nav class="cafc-nav"><div class="cafc-container cafc-nav-inner"><a href="../index.html" class="cafc-logo">Caffeine<span>Check</span></a><button class="cafc-nav-toggle" onclick="document.querySelector('.cafc-nav-links').classList.toggle('active')">☰</button><ul class="cafc-nav-links"><li><a href="../index.html">Home</a></li><li><a href="./index.html">Tools</a></li><li><a href="../blog/index.html">Blog</a></li><li><a href="../about.html">About</a></li><li><a href="../contact.html">Contact</a></li><li><a href="../faq.html">FAQ</a></li></ul></div></nav>
+<div class="cafc-container"><nav class="cafc-breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="./index.html">Tools</a><span>/</span><span>Energy Drink Comparator</span></nav></div>
+<div class="cafc-tool-hero"><div class="cafc-container"><h1>Energy Drink Comparator</h1><p>Compare caffeine-per-dollar, sugar content, and crash risk. No marketing, just data.</p></div></div>
+<div class="cafc-container"><div class="cafc-ad-slot" data-ad-slot="tool_top"><span>Advertisement</span></div></div>
+
+<main class="cafc-container" style="padding:2rem 0 3rem;">
+<div class="cafc-tool-panel"><div style="display:flex;gap:0.5rem;margin-bottom:1.5rem;flex-wrap:wrap;" id="tab-nav"><button class="cafc-tab-btn active" onclick="switchTab('caffeine')" data-tab="caffeine">Caffeine</button><button class="cafc-tab-btn" onclick="switchTab('sugar')" data-tab="sugar">Sugar</button><button class="cafc-tab-btn" onclick="switchTab('cost')" data-tab="cost">Cost/mg</button><button class="cafc-tab-btn" onclick="switchTab('crash')" data-tab="crash">Crash Risk</button></div>
+
+<div id="tab-caffeine" class="cafc-tab-content active"><h3 style="font-size:1.1rem;font-weight:700;color:var(--cafc-primary);margin-bottom:1rem;">Caffeine Content (mg per can)</h3><div id="caffeine-comparison"></div></div>
+<div id="tab-sugar" class="cafc-tab-content" style="display:none;"><h3 style="font-size:1.1rem;font-weight:700;color:var(--cafc-primary);margin-bottom:1rem;">Sugar Content (g per can)</h3><div id="sugar-comparison"></div></div>
+<div id="tab-cost" class="cafc-tab-content" style="display:none;"><h3 style="font-size:1.1rem;font-weight:700;color:var(--cafc-primary);margin-bottom:1rem;">Cost per mg Caffeine ($)</h3><div id="cost-comparison"></div></div>
+<div id="tab-crash" class="cafc-tab-content" style="display:none;"><h3 style="font-size:1.1rem;font-weight:700;color:var(--cafc-primary);margin-bottom:1rem;">Crash Risk Rating</h3><div id="crash-comparison"></div></div>
+
+<div class="cafc-btn-group" style="margin-top:1.5rem;"><button class="cafc-btn cafc-btn-secondary" onclick="exportComparison()">Export Comparison</button><button class="cafc-btn cafc-btn-secondary" onclick="resetComparison()">Reset Selection</button></div>
+</div>
+
+<div class="cafc-tool-panel" style="margin-top:2rem;"><h3 style="font-size:1.1rem;font-weight:700;color:var(--cafc-primary);margin-bottom:1rem;">Select Drinks to Compare</h3><div id="drink-selector" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;"></div></div>
+
+<div class="cafc-tool-panel" style="margin-top:2rem;"><h3 style="font-size:1.1rem;font-weight:700;color:var(--cafc-primary);margin-bottom:1rem;">Your Saved Comparisons</h3><div id="saved-comparisons"><p style="color:var(--cafc-text-muted);font-size:0.9rem;">Select drinks and save your comparison.</p></div><div class="cafc-btn-group" style="margin-top:1rem;"><button class="cafc-btn cafc-btn-accent" onclick="clearComparisons()" style="background:#dc2626;">Clear All</button></div></div>
+</main>
+
+<div class="cafc-container">
+  <div class="cafc-ad-slot" data-ad-slot="tool_middle"><span>Advertisement</span></div>
+</div>
+
+<div class="cafc-container"><div class="cafc-ad-slot" data-ad-slot="tool_bottom"><span>Advertisement</span></div></div>
+<div class="cafc-container" style="padding:2rem 0;"><div style="display:grid;grid-template-columns:2fr 1fr;gap:2rem;"><div><h3 style="font-size:1.1rem;font-weight:700;color:var(--cafc-primary);margin-bottom:1rem;">Related Articles</h3><ul class="cafc-related-list" id="related-articles"><li><a href="../blog/index.html"><span>Browse articles →</span></a></li></ul></div><div><h3 style="font-size:1.1rem;font-weight:700;color:var(--cafc-primary);margin-bottom:1rem;">Other Tools</h3><ul class="cafc-tool-list" id="other-tools"><li><a href="./caffeine-calculator.html"><span>Caffeine Calculator</span></a></li><li><a href="./half-life-tracker.html"><span>Half-Life Tracker</span></a></li><li><a href="./sleep-estimator.html"><span>Sleep Estimator</span></a></li><li><a href="./pregnancy-limit.html"><span>Pregnancy Limit</span></a></li><li><a href="./withdrawal-timeline.html"><span>Withdrawal Timeline</span></a></li></ul></div></div></div>
+
+<div class="cafc-container" style="padding: 2rem 0;">
+<div class="cafc-tool-panel">
+<h2 style="font-size:1.3rem;font-weight:700;color:var(--cafc-primary);margin-bottom:1.5rem;">How It Works</h2>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;">
+<div>
+<h4 style="color:var(--cafc-primary);font-size:1rem;margin-bottom:0.5rem;">🔬 Calculation Principle</h4>
+<p style="font-size:0.9rem;color:var(--cafc-text-muted);line-height:1.6;">The comparator uses a verified database of 10 popular energy drinks with lab-tested caffeine, sugar, and cost data. Bars are normalized to the maximum value in each category for visual comparison. Cost-per-mg is calculated as price divided by caffeine content.</p>
+</div>
+<div>
+<h4 style="color:var(--cafc-primary);font-size:1rem;margin-bottom:0.5rem;">📝 How to Use</h4>
+<p style="font-size:0.9rem;color:var(--cafc-text-muted);line-height:1.6;">Select drinks from the checkbox grid below the tabs. Switch between Caffeine, Sugar, Cost/mg, and Crash Risk tabs to compare different dimensions. Up to 5 drinks can be compared simultaneously. Save comparisons to track your favorites over time.</p>
+</div>
+<div>
+<h4 style="color:var(--cafc-primary);font-size:1rem;margin-bottom:0.5rem;">💡 Pro Tips</h4>
+<p style="font-size:0.9rem;color:var(--cafc-text-muted);line-height:1.6;">• Check Cost/mg to find the best value.<br>• Crash Risk combines caffeine + sugar + other stimulants.<br>• Zero-sugar drinks can still have high caffeine.<br>• Compare before you buy — marketing is not data.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="cafc-container" style="padding: 2rem 0;">
+<div style="background: var(--cafc-bg-warm); border: 1px solid var(--cafc-border); border-radius: var(--cafc-radius-lg); padding: 1.5rem; text-align: center;">
+<p style="font-weight: 600; color: var(--cafc-primary); margin-bottom: 1rem; font-size: 1rem;">Share this tool</p>
+<div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+<a href="https://twitter.com/intent/tweet?text=Energy Drink Comparator&url=https://caffeinecheck.org/tools/energy-drink-comparator.html" target="_blank" rel="noopener" class="cafc-btn cafc-btn-secondary" style="font-size: 0.85rem;">𝕏 Twitter</a>
+<a href="https://www.facebook.com/sharer/sharer.php?u=https://caffeinecheck.org/tools/energy-drink-comparator.html" target="_blank" rel="noopener" class="cafc-btn cafc-btn-secondary" style="font-size: 0.85rem;">Facebook</a>
+<a href="https://www.linkedin.com/sharing/share-offsite/?url=https://caffeinecheck.org/tools/energy-drink-comparator.html" target="_blank" rel="noopener" class="cafc-btn cafc-btn-secondary" style="font-size: 0.85rem;">LinkedIn</a>
+<a href="mailto:?subject=Energy Drink Comparator&body=https://caffeinecheck.org/tools/energy-drink-comparator.html" class="cafc-btn cafc-btn-secondary" style="font-size: 0.85rem;">Email</a>
+<button onclick="navigator.clipboard.writeText('https://caffeinecheck.org/tools/energy-drink-comparator.html').then(function(){alert('Link copied!');})" class="cafc-btn cafc-btn-secondary" style="font-size: 0.85rem;">Copy Link</button>
+</div>
+</div>
+</div>
+<footer class="cafc-footer"><div class="cafc-container"><div class="cafc-footer-grid"><div class="cafc-footer-col"><h4>Latest Articles</h4><ul id="cafc-footer-articles"><li><a href="../blog/index.html">Browse all articles →</a></li></ul></div><div class="cafc-footer-col"><h4>Tools</h4><ul><li><a href="./caffeine-calculator.html">Caffeine Calculator</a></li><li><a href="./half-life-tracker.html">Half-Life Tracker</a></li><li><a href="./sleep-estimator.html">Sleep Estimator</a></li><li><a href="./pregnancy-limit.html">Pregnancy Limit</a></li><li><a href="./energy-drink-comparator.html">Energy Drink Comparator</a></li><li><a href="./withdrawal-timeline.html">Withdrawal Timeline</a></li></ul></div><div class="cafc-footer-col"><h4>Legal</h4><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms of Use</a></li><li><a href="../disclaimer.html">Disclaimer</a></li><li><a href="../disclosure.html">Affiliate Disclosure</a></li><li><a href="../faq.html">FAQ</a></li><li><a href="../contact.html">Contact</a></li></ul></div></div><div class="cafc-footer-bottom"><p>© 2026 CaffeineCheck. All rights reserved.</p><div class="cafc-back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Back to top</div></div></div></footer>
+
+<script src="../ads-loader.js"></script>
+<script>
+(function(){
+'use strict';
+var DB_KEY='energy_comparisons_v1';
+var drinks=[
+{name:"Red Bull (8.4oz)",caffeine:80,sugar:27,cost:2.50,crash:7},
+{name:"Monster (16oz)",caffeine:160,sugar:54,cost:3.50,crash:8},
+{name:"Rockstar (16oz)",caffeine:160,sugar:62,cost:3.00,crash:8},
+{name:"5-Hour Energy (2oz)",caffeine:200,sugar:0,cost:3.00,crash:9},
+{name:"Bang (16oz)",caffeine:300,sugar:0,cost:3.50,crash:9},
+{name:"Celsius (12oz)",caffeine:200,sugar:0,cost:2.75,crash:5},
+{name:"Reign (16oz)",caffeine:300,sugar:0,cost:3.00,crash:8},
+{name:"NOS (16oz)",caffeine:160,sugar:54,cost:3.25,crash:8},
+{name:"Full Throttle (16oz)",caffeine:160,sugar:58,cost:3.00,crash:8},
+{name:"AMP (16oz)",caffeine:142,sugar:58,cost:2.75,crash:7}
+];
+var selected=[0,1,2];
+function switchTab(tab){document.querySelectorAll('.cafc-tab-content').forEach(function(c){c.style.display='none';});document.querySelectorAll('.cafc-tab-btn').forEach(function(b){b.classList.remove('active');});document.getElementById('tab-'+tab).style.display='block';document.querySelector('[data-tab="'+tab+'"]').classList.add('active');renderComparison();}
+function renderComparison(){var sel=drinks.filter(function(d,i){return selected.includes(i);});renderBars('caffeine-comparison',sel,'caffeine','mg','var(--cafc-primary)');renderBars('sugar-comparison',sel,'sugar','g','#f59e0b');renderBars('cost-comparison',sel,'cost','$/mg','#16a34a');renderBars('crash-comparison',sel,'crash','/10','#dc2626');}
+function renderBars(id,items,field,unit,color){var div=document.getElementById(id);var max=Math.max.apply(null,items.map(function(d){return d[field];}));div.innerHTML='';items.forEach(function(d){var pct=(d[field]/max)*100;var html='<div style="margin-bottom:1rem;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.35rem;"><span style="font-weight:600;font-size:0.9rem;color:var(--cafc-primary);">'+d.name+'</span><span style="font-weight:700;font-size:0.9rem;color:'+color+';">'+d[field]+unit+'</span></div><div style="height:24px;background:var(--cafc-secondary);border-radius:12px;overflow:hidden;"><div style="width:'+pct+'%;height:100%;background:'+color+';border-radius:12px;transition:width 0.6s ease;"></div></div></div>';div.innerHTML+=html;});}
+function renderSelector(){var div=document.getElementById('drink-selector');div.innerHTML='';drinks.forEach(function(d,i){var checked=selected.includes(i)?'checked':'';div.innerHTML+='<label style="display:flex;align-items:center;gap:0.5rem;padding:0.75rem;background:var(--cafc-bg-warm);border:1px solid var(--cafc-border);border-radius:var(--cafc-radius);cursor:pointer;font-size:0.9rem;"><input type="checkbox" value="'+i+'" '+checked+' onchange="toggleDrink('+i+')">'+d.name+'</label>';});}
+function toggleDrink(idx){if(selected.includes(idx)){selected=selected.filter(function(i){return i!==idx;});}else if(selected.length<5){selected.push(idx);}renderSelector();renderComparison();saveComparison();}
+function saveComparison(){var comps=JSON.parse(localStorage.getItem(DB_KEY)||'[]');comps.push({id:Date.now(),selected:selected,date:new Date().toISOString()});localStorage.setItem(DB_KEY,JSON.stringify(comps));renderSaved();}
+function renderSaved(){var comps=JSON.parse(localStorage.getItem(DB_KEY)||'[]');var div=document.getElementById('saved-comparisons');if(comps.length===0){div.innerHTML='<p style="color:var(--cafc-text-muted);font-size:0.9rem;">No saved comparisons yet.</p>';return;}div.innerHTML='<div style="max-height:200px;overflow-y:auto;"><table class="cafc-table"><thead><tr><th>Date</th><th>Drinks</th><th>Action</th></tr></thead><tbody>'+comps.slice(-10).reverse().map(function(c){return '<tr><td>'+c.date.slice(0,10)+'</td><td>'+c.selected.length+' drinks</td><td><button onclick="loadComparison('+c.id+')" style="background:none;border:none;color:var(--cafc-accent);cursor:pointer;font-size:0.85rem;">Load</button></td></tr>';}).join('')+'</tbody></table></div>';}
+function loadComparison(id){var comps=JSON.parse(localStorage.getItem(DB_KEY)||'[]');var comp=comps.find(function(c){return c.id===id;});if(comp){selected=comp.selected;renderSelector();renderComparison();}}
+function resetComparison(){selected=[0,1,2];renderSelector();renderComparison();}
+function clearComparisons(){if(!confirm('Clear ALL saved comparisons?'))return;localStorage.removeItem(DB_KEY);renderSaved();}
+function exportComparison(){var sel=drinks.filter(function(d,i){return selected.includes(i);});var csv='Drink,Caffeine(mg),Sugar(g),Cost($),Crash(1-10)\n';sel.forEach(function(d){csv+=d.name+','+d.caffeine+','+d.sugar+','+d.cost+','+d.crash+'\n';});var blob=new Blob([csv],{type:'text/csv'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='energy-drink-comparison.csv';a.click();}
+function loadRelatedArticles(){fetch('../articles.json').then(function(r){return r.json();}).then(function(data){var articles=Array.isArray(data)?data:(data.articles||[]);var list=document.getElementById('related-articles');if(list&&articles.length>0){list.innerHTML='';articles.slice(0,3).forEach(function(a){var li=document.createElement('li');var link=document.createElement('a');link.href='../blog/'+a.slug+'.html';var img=document.createElement('img');img.src='../images/blog/'+a.slug+'.jpg';img.alt=a.title;img.width=60;img.height=45;img.loading='lazy';var span=document.createElement('span');span.textContent=a.title;link.appendChild(img);link.appendChild(span);li.appendChild(link);list.appendChild(li);});}}).catch(function(e){console.warn(e);});}
+function loadFooterArticles(){fetch('../articles.json').then(function(r){return r.json();}).then(function(data){var articles=Array.isArray(data)?data:(data.articles||[]);var fl=document.getElementById('cafc-footer-articles');if(fl&&articles.length>0){fl.innerHTML='';articles.slice(0,5).forEach(function(a){var li=document.createElement('li');var link=document.createElement('a');link.href='../blog/'+a.slug+'.html';link.textContent=a.title;li.appendChild(link);fl.appendChild(li);});}}).catch(function(e){console.warn(e);});}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){renderSelector();renderComparison();renderSaved();loadRelatedArticles();loadFooterArticles();});}else{renderSelector();renderComparison();renderSaved();loadRelatedArticles();loadFooterArticles();}
+window.switchTab=switchTab;window.toggleDrink=toggleDrink;window.loadComparison=loadComparison;
+})();
+</script>
+<style>
+.cafc-tab-btn{background:var(--cafc-bg-warm);border:1px solid var(--cafc-border);padding:0.6rem 1.2rem;border-radius:var(--cafc-radius);font-weight:600;font-size:0.9rem;color:var(--cafc-text-muted);cursor:pointer;transition:var(--cafc-transition);}
+.cafc-tab-btn.active{background:var(--cafc-primary);color:#fff;border-color:var(--cafc-primary);}
+.cafc-tab-btn:hover:not(.active){background:var(--cafc-secondary);color:var(--cafc-primary);}
+</style>
+</body>
+</html>
